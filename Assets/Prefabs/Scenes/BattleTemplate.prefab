@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 2602967400844755253}
   - component: {fileID: 387622490532463331}
   m_Layer: 0
-  m_Name: BasicScene
+  m_Name: BattleTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
