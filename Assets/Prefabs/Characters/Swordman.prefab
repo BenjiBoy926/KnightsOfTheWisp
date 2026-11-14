@@ -1463,7 +1463,6 @@ MonoBehaviour:
   _minWidth: 200
   _timeBetweenCharacters: 0.025
   _audioSource: {fileID: 3085657531106816025}
-  _proceedAction: {fileID: -9195287876939935047, guid: 13df5c69850f8384f961ed91b17f62b0, type: 3}
   _repositionDuration: 0.1
   _screenPadding: 10
 --- !u!1 &4658844773822326104
@@ -3127,11 +3126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6918736015978159767, guid: ec856cb46b4aa164283acf6b9bce1f65, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6918736015978159767, guid: ec856cb46b4aa164283acf6b9bce1f65, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6918736015978159767, guid: ec856cb46b4aa164283acf6b9bce1f65, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3163,11 +3162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6918736015978159767, guid: ec856cb46b4aa164283acf6b9bce1f65, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6918736015978159767, guid: ec856cb46b4aa164283acf6b9bce1f65, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6918736015978159767, guid: ec856cb46b4aa164283acf6b9bce1f65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

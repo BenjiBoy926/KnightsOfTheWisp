@@ -1,9 +1,7 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(RectTransform))]
 public class CharacterSpeechBubble : MonoBehaviour
@@ -13,15 +11,14 @@ public class CharacterSpeechBubble : MonoBehaviour
     [SerializeField] private float _minWidth = 100;
     [SerializeField] private float _timeBetweenCharacters = 0.05f;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private InputActionReference _proceedAction;
     [SerializeField] private float _repositionDuration = 0.1f;
     [SerializeField] private float _screenPadding = 10;
     private RectTransform _rectTransform;
     private CharacterSpeechBodyText _body;
     private CharacterSpeechBubblePointer _pointer;
+    private ContinueMarker _continueMarker;
     private Vector2 _textPadding;
     private Character _character;
-    private bool _proceed;
     private TweenCallback _disableAction;
     private string _fullText;
 
@@ -30,6 +27,7 @@ public class CharacterSpeechBubble : MonoBehaviour
         _rectTransform = GetComponent<RectTransform>();
         _body = GetComponentInChildren<CharacterSpeechBodyText>();
         _pointer = GetComponentInChildren<CharacterSpeechBubblePointer>();
+        _continueMarker = GetComponentInChildren<ContinueMarker>(true);
         _character = GetComponentInParent<Character>();
         _name.text = _character.Name;
         _disableAction = () => gameObject.SetActive(false);
@@ -42,19 +40,12 @@ public class CharacterSpeechBubble : MonoBehaviour
 
     private void OnEnable()
     {
-        _proceedAction.action.started += OnProceed;
         Fullscreen.Changed += Reposition;
     }
 
     private void OnDisable()
     {
-        _proceedAction.action.started -= OnProceed;
         Fullscreen.Changed -= Reposition;
-    }
-
-    private void OnProceed(InputAction.CallbackContext obj)
-    {
-        _proceed = true;
     }
 
     public IEnumerator GetDisplaySequence(string text)
@@ -68,7 +59,7 @@ public class CharacterSpeechBubble : MonoBehaviour
 
         Reposition();
         yield return ScrollText();
-        yield return WaitToProceed();
+        yield return _continueMarker.Wait();
 
         transform.DOKill();
         transform.DOScale(0, _repositionDuration).OnComplete(_disableAction);
@@ -91,8 +82,9 @@ public class CharacterSpeechBubble : MonoBehaviour
     {
         _body.Clear();
         _audioSource.Play();
-        _proceed = false;
-        for (int i = 0; i < _fullText.Length && !_proceed; i++)
+
+        _continueMarker.Listen();
+        for (int i = 0; i < _fullText.Length && !_continueMarker.Continue; i++)
         {
             char c = _fullText[i];
             _body.Append(c);
@@ -100,7 +92,7 @@ public class CharacterSpeechBubble : MonoBehaviour
         }
         _audioSource.Stop();
 
-        if (_proceed)
+        if (_continueMarker.Continue)
         {
             _body.SetText(_fullText);
         }
@@ -112,21 +104,12 @@ public class CharacterSpeechBubble : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < _timeBetweenCharacters)
         {
-            if (_proceed)
+            if (_continueMarker.Continue)
             {
                 break;
             }
             yield return null;
             elapsedTime = Time.time - startTime;
-        }
-    }
-
-    private IEnumerator WaitToProceed()
-    {
-        _proceed = false;
-        while (!_proceed)
-        {
-            yield return null;
         }
     }
 

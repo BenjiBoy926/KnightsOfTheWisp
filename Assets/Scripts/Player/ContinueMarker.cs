@@ -7,6 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Graphic))]
 public class ContinueMarker : MonoBehaviour
 {
+    public bool Continue => _continue;
+
     [SerializeField] private InputActionReference _continueAction;
     [SerializeField] private float _fadeDuration = 0.5f;
     private Graphic _graphic;
@@ -44,7 +46,7 @@ public class ContinueMarker : MonoBehaviour
         SetAlpha(0);
         _graphic.DOFade(1, _fadeDuration).SetLoops(-1, LoopType.Yoyo);
 
-        _continue = false;
+        Listen();
         while (!_continue)
         {
             yield return null;
@@ -52,6 +54,11 @@ public class ContinueMarker : MonoBehaviour
 
         _graphic.DOKill();
         SetAlpha(0);
+    }
+
+    public void Listen()
+    {
+        _continue = false;
     }
 
     private void SetAlpha(float alpha)
