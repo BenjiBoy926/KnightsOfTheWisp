@@ -35,6 +35,7 @@ public class Battle : MonoBehaviour
     public int StateCount => _history.StateCount;
     public int LatestStateIndex => _history.LatestStateIndex;
 
+    [SerializeField] private bool _beginAutomatically;
     private BattleSetup _setup;
     private Battlefield _field;
     private BattleTurn _turn;
@@ -64,6 +65,14 @@ public class Battle : MonoBehaviour
         _computerPlayer = GetComponentInChildren<ComputerPlayer>();
 
         _setup.PerformSetupRegistration(this);
+    }
+
+    private void Start()
+    {
+        if (_beginAutomatically)
+        {
+            Begin();
+        }
     }
 
     public void Begin()
