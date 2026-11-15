@@ -68,7 +68,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 0
   m_Looping: 1
   m_WaitForFirstFrame: 1
@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slideDuration: 0.5
+  _slideOffset: 100
   _slideEase: 15
 --- !u!1 &6255155777814579255
 GameObject:
