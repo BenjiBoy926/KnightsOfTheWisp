@@ -50,8 +50,11 @@ public class PlayerInput : MonoBehaviour, DefaultActions.IPlayerActions
         {
             ApplyMoveDirection();
         }
-        float zoomChangeThisFrame = _zoomChangeSpeed * Time.deltaTime * _zoomDirection;
-        _player.ChangeZoom(zoomChangeThisFrame);
+        if (!Mathf.Approximately(_zoomDirection, 0f))
+        {
+            float zoomChangeThisFrame = _zoomChangeSpeed * Time.deltaTime * _zoomDirection;
+            _player.ChangeZoom(zoomChangeThisFrame);
+        }
     }
 
     private void ApplyMoveDirection()
