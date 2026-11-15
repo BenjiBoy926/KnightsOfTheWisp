@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 494638555101916120, guid: 40ddfe82c94d4be46bac71fd8888cc77, type: 3}
+      propertyPath: _skip
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1029606028522639678, guid: 40ddfe82c94d4be46bac71fd8888cc77, type: 3}
       propertyPath: m_Name
       value: Tutorial
@@ -595,6 +599,10 @@ PrefabInstance:
     - target: {fileID: 6339852168241542708, guid: 40ddfe82c94d4be46bac71fd8888cc77, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471854537064955432, guid: 40ddfe82c94d4be46bac71fd8888cc77, type: 3}
+      propertyPath: _nextScene
+      value: VerticalSlice
       objectReference: {fileID: 0}
     - target: {fileID: 6564443648580692920, guid: 40ddfe82c94d4be46bac71fd8888cc77, type: 3}
       propertyPath: m_AnchorMax.y

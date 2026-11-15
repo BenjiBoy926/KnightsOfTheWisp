@@ -22,10 +22,12 @@ public class BattleTurnChangeLabel : MonoBehaviour
         _label = GetComponent<TMP_Text>();
 
         _rectTransform.anchoredPosition = new(-Screen.width, 0);
+        gameObject.SetActive(false);
     }
 
     public IEnumerator Animate(Faction faction)
     {
+        gameObject.SetActive(true);
         EazySoundManager.PlayUISound(_arrivalSound);
 
         _label.text = $"{faction.Name} Turn";
@@ -33,5 +35,6 @@ public class BattleTurnChangeLabel : MonoBehaviour
         yield return _rectTransform.DOAnchorPosX(-_waitOffset, _moveDuration).WaitForCompletion();
         yield return _rectTransform.DOAnchorPosX(_waitOffset, _waitDuration).WaitForCompletion();
         yield return _rectTransform.DOAnchorPosX(Screen.width, _moveDuration).WaitForCompletion();
+        gameObject.SetActive(false);
     }
 }

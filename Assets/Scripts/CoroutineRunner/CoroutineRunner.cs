@@ -47,7 +47,10 @@ public class CoroutineRunner : MonoBehaviour
 
         foreach (var coroutine in _coroutines[requester])
         {
-            Instance.StopCoroutine(coroutine);
+            if (coroutine != null)
+            {
+                Instance.StopCoroutine(coroutine);
+            }
         }
         _coroutines[requester].Clear();
     }

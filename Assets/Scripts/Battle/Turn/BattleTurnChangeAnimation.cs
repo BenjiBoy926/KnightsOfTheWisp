@@ -4,10 +4,9 @@ using TMPro;
 
 public class BattleTurnChangeAnimation : MonoBehaviour
 {
-    private readonly static WaitForSeconds _waitForSeconds3 = new(3);
-
     public bool IsPlaying => _isPlaying;
 
+    [SerializeField] private bool _skip;
     private Battle _battle;
     private Overlay _overlay;
     private BattleTurnChangeBanner _banner;
@@ -31,6 +30,9 @@ public class BattleTurnChangeAnimation : MonoBehaviour
 
     private IEnumerator GetPlaySequence(Faction faction)
     {
+        if (ShouldSkip())
+            yield break;
+
         _isPlaying = true;
         yield return _overlay.FadeIn();
         yield return _banner.AnimateIn(faction);
@@ -40,5 +42,10 @@ public class BattleTurnChangeAnimation : MonoBehaviour
         _isPlaying = false;
 
         yield return _battle.GetTurnStartSequence();
+    }
+
+    private bool ShouldSkip()
+    {
+        return _skip && Application.isEditor;
     }
 }
