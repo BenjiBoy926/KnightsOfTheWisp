@@ -20,6 +20,7 @@ public class BattleSequence_AttackTutorial : BattleSequence
 
     protected override IEnumerator GetSequence(Character interactor, Character target)
     {
+        gameObject.SetActive(true);
         yield return _window.Show();
     }
 }

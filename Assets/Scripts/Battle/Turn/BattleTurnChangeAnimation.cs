@@ -16,9 +16,9 @@ public class BattleTurnChangeAnimation : MonoBehaviour
     private void Awake()
     {
         _battle = GetComponentInParent<Battle>();
-        _overlay = GetComponentInChildren<Overlay>();
-        _banner = GetComponentInChildren<BattleTurnChangeBanner>();
-        _label = GetComponentInChildren<BattleTurnChangeLabel>();
+        _overlay = GetComponentInChildren<Overlay>(true);
+        _banner = GetComponentInChildren<BattleTurnChangeBanner>(true);
+        _label = GetComponentInChildren<BattleTurnChangeLabel>(true);
     }
 
     public void Play(Faction faction)
