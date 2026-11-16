@@ -42,5 +42,9 @@ public class TutorialStage : MonoBehaviour
             recorder.StopRecording();
             yield return player.Teardown();
         }
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#endif
     }
 }
