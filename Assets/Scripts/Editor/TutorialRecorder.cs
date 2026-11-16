@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class TutorialRecorder : ITutorialRecorder
 {
+    private RecorderSettings _recorderSettings;
     private RecorderController _recorder;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -22,14 +23,15 @@ public class TutorialRecorder : ITutorialRecorder
 
     public TutorialRecorder()
     {
-        RecorderSettings recorderSettings = GetRecorderSettings();
-        RecorderControllerSettings controllerSettings = GetControllerSettings(recorderSettings);
+        _recorderSettings = GetRecorderSettings();
+        RecorderControllerSettings controllerSettings = GetControllerSettings(_recorderSettings);
         _recorder = new(controllerSettings);
     }
 
     // NOTE: need to change file name here
-    public void StartRecording()
+    public void StartRecording(string tutorialName)
     {
+        _recorderSettings.FileNameGenerator.FileName = $"Tutorial_{tutorialName}";
         _recorder.PrepareRecording();
         _recorder.StartRecording();
     }
@@ -55,7 +57,6 @@ public class TutorialRecorder : ITutorialRecorder
         // Output File
         recorderSettings.FileNameGenerator.Root = OutputPath.Root.StreamingAssets;
         recorderSettings.FileNameGenerator.Leaf = "";
-        recorderSettings.FileNameGenerator.FileName = "Tutorial";
 
         return recorderSettings;
     }
