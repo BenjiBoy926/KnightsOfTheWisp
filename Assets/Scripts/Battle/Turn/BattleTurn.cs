@@ -32,6 +32,12 @@ public class BattleTurn : MonoBehaviour
         }
     }
 
+    public void ClearFactions()
+    {
+        _factions.Clear();
+        _currentFactionIndex = -1;
+    }
+
     public void StartNextTurn()
     {
         _battle.SetPlayerPosition(_battle.PlayerCommanderPosition);

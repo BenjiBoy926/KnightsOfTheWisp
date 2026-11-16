@@ -1,19 +1,20 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Battle))]
 public class BattleSetup : MonoBehaviour
 {
     private Battle _battle;
 
-    public void PerformSetupRegistration(Battle battle)
+    public void Prepare(Battle battle)
     {
         _battle = battle;
+        _battle.ClearFactions();
         RegisterAllCharacters();
         RegisterAllSquads();
     }
 
     public void Begin()
     {
+        // Clear history
         _battle.StartPlayerTurn();
         RecordInitialState();
     }

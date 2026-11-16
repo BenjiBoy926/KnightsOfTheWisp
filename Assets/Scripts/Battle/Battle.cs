@@ -62,8 +62,12 @@ public class Battle : MonoBehaviour
         _sequencer = GetComponent<BattleSequencer>();
         _player = GetComponentInChildren<Player>();
         _computerPlayer = GetComponentInChildren<ComputerPlayer>();
+        Prepare();
+    }
 
-        _setup.PerformSetupRegistration(this);
+    public void Prepare()
+    {
+        _setup.Prepare(this);
     }
 
     public void Begin()
@@ -148,6 +152,11 @@ public class Battle : MonoBehaviour
     }
 
     // Battle Turn ===
+
+    public void ClearFactions()
+    {
+        _turn.ClearFactions();
+    }
 
     public void StartPlayerTurn()
     {
