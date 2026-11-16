@@ -168,61 +168,65 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Release()
+    public Coroutine Release()
     {
         if (_activeCharacter)
         {
-            FinishMove();
+            return FinishMove();
         }
         else
         {
             _battle.ReleaseCamera();
+            return null;
         }
     }
 
-    public void FinishMove()
+    private Coroutine FinishMove()
     {
         if (!_activeCharacter) 
-            return;
+            return null;
 
         bool shouldConfirm = _activeCharacter.CouldStayInCell(_activeCharacter.CurrentCell);
         if (shouldConfirm)
         {
-            ConfirmMove();
+            return ConfirmMove();
         }
         else
         {
-            CancelMove();
+            return CancelMove();
         }
     }
 
-    private void ConfirmMove()
+    private Coroutine ConfirmMove()
     {
         if (!_activeCharacter)
-            return;
+            return null;
 
+        Coroutine routine;
         if (!IsTargettingOtherCharacter())
         {
-            _activeCharacter.Defend();
+            routine = _activeCharacter.Defend();
         }
         else if (_characterAtCurrentCell.Faction == _activeCharacter.Faction)
         {
-            _activeCharacter.Heal(_characterAtCurrentCell);
+            routine = _activeCharacter.Heal(_characterAtCurrentCell);
         }
         else
         {
-            _activeCharacter.Attack(_characterAtCurrentCell);
+            routine =_activeCharacter.Attack(_characterAtCurrentCell);
         }
         Deselect();
+        return routine;
     }
 
-    public void CancelMove()
+    public Coroutine CancelMove()
     {
         if (!_activeCharacter)
-            return;
+            return null;
 
-        _activeCharacter.Cancel();
+        Coroutine routine = _activeCharacter.Cancel();
         Deselect();
+        return routine;
     }
 
     private void Deselect()
