@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class TutorialPlayer : MonoBehaviour
 {
     protected readonly WaitForSeconds Wait1 = new(1);
+    protected readonly WaitForSeconds Wait2 = new(2);
 
     public abstract string Name { get; }
     protected Battle Battle => _battle;
