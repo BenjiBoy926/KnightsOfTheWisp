@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
         get => _battle.CameraPosition;
         set => _battle.CameraPosition = value;
     }
+    public Vector2 CursorPosition => _cursor.Position;
 
     [SerializeField] private Faction _faction;
     [SerializeField] private AudioSource _cellHoverAudio;

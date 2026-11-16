@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Battle))]
@@ -7,6 +8,7 @@ public class TutorialStage : MonoBehaviour
     private PlayerInput _input;
     private BattleTurnChangeAnimation _turnChangeAnimation;
     private CharacterDetailPanel[] _detailPanels;
+    private TutorialPlayer[] _players;
 
     private void Awake()
     {
@@ -14,9 +16,10 @@ public class TutorialStage : MonoBehaviour
         _input = GetComponentInChildren<PlayerInput>(true);
         _turnChangeAnimation = GetComponentInChildren<BattleTurnChangeAnimation>(true);
         _detailPanels = GetComponentsInChildren<CharacterDetailPanel>(true);
+        _players = GetComponentsInChildren<TutorialPlayer>(true);
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         _input.enabled = false;
         _turnChangeAnimation.Skip = true;
@@ -24,6 +27,14 @@ public class TutorialStage : MonoBehaviour
         {
             panel.gameObject.SetActive(false);
         }
-        _battle.Begin();
+
+        foreach (var player in _players)
+        {
+            yield return player.Setup();
+            // Start recording!
+            yield return player.Play();
+            // Stop recording!
+            yield return player.Teardown();
+        }
     }
 }
