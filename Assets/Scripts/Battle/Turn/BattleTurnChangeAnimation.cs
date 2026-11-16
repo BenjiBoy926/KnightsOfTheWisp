@@ -5,6 +5,11 @@ using TMPro;
 public class BattleTurnChangeAnimation : MonoBehaviour
 {
     public bool IsPlaying => _isPlaying;
+    public bool Skip
+    {
+        get => _skip;
+        set => _skip = value;
+    }
 
     [SerializeField] private bool _skip;
     private Battle _battle;

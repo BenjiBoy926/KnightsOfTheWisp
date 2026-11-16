@@ -4,16 +4,22 @@ using UnityEngine;
 public class TutorialStage : MonoBehaviour
 {
     private Battle _battle;
+    private PlayerInput _input;
+    private BattleTurnChangeAnimation _turnChangeAnimation;
     private CharacterDetailPanel[] _detailPanels;
 
     private void Awake()
     {
         _battle = GetComponent<Battle>();
+        _input = GetComponentInChildren<PlayerInput>(true);
+        _turnChangeAnimation = GetComponentInChildren<BattleTurnChangeAnimation>(true);
         _detailPanels = GetComponentsInChildren<CharacterDetailPanel>(true);
     }
 
     private void Start()
     {
+        _input.enabled = false;
+        _turnChangeAnimation.Skip = true;
         foreach (var panel in _detailPanels)
         {
             panel.gameObject.SetActive(false);
