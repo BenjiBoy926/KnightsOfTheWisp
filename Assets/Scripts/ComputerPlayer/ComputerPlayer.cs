@@ -48,7 +48,7 @@ public class ComputerPlayer : MonoBehaviour
         if (faction != _player.Faction)
         {
             _faction = faction;
-            CoroutineRunner.Play(this, Move());
+            CoroutineRunner.Run(this, Move());
         }
     }
 

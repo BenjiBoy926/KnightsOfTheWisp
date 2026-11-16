@@ -29,7 +29,12 @@ public class CoroutineRunner : MonoBehaviour
         return _instance;
     }
 
-    public static Coroutine Play(Object requester, IEnumerator sequence)
+    public static Coroutine Run(IEnumerator sequence)
+    {
+        return Run(Instance, sequence);
+    }
+
+    public static Coroutine Run(Object requester, IEnumerator sequence)
     {
         if (!_coroutines.ContainsKey(requester))
         {

@@ -1,35 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.Recorder;
-using UnityEditor.Recorder.Encoder;
 using UnityEditor.Recorder.Input;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialRecorder : ITutorialRecorder
 {
     private const string TutorialScenePath = "Assets/Scenes/TutorialScene.unity";
 
-    private RecorderSettings _recorderSettings;
-    private RecorderController _recorder;
+    private readonly RecorderSettings _recorderSettings;
+    private readonly RecorderController _recorder;
 
     [MenuItem("Tools/Record All Tutorials")]
     private static void RecordAllTutorials()
     {
-        EditorApplication.EnterPlaymode();
         EditorSceneManager.OpenScene(TutorialScenePath, OpenSceneMode.Single);
-        Initialize();
+        EditorApplication.EnterPlaymode();
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Initialize()
     {
+        CoroutineRunner.Run(GetRecordSequence());
+    }
+
+    private static IEnumerator GetRecordSequence()
+    {
         TutorialStage stage = Object.FindAnyObjectByType<TutorialStage>();
         if (stage)
         {
-            stage.Record(new TutorialRecorder());
+            yield return stage.GetRecordSequence(new TutorialRecorder());
         }
+        EditorApplication.ExitPlaymode();
     }
 
     public TutorialRecorder()

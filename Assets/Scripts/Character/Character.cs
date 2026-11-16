@@ -166,35 +166,35 @@ public class Character : MonoBehaviour
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _attackBehaviour.GetSequence(other);
-        return CoroutineRunner.Play(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine Defend()
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _defendBehaviour.GetSequence();
-        return CoroutineRunner.Play(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine Heal(Character other)
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _healBehaviour.GetSequence(other);
-        return CoroutineRunner.Play(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine BeHealed(Character other)
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _beHealedBehaviour.GetSequence(other);
-        return CoroutineRunner.Play(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine Cancel()
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _cancelBehaviour.GetSequence();
-        return CoroutineRunner.Play(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public IEnumerator BeginMoveSequence(Character other)

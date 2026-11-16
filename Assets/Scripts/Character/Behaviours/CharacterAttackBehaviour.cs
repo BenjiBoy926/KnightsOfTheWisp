@@ -44,7 +44,7 @@ public class CharacterAttackBehaviour : MonoBehaviour
         yield return GetMeleeSwipeSequence(other);
 
         _character.MoveToCellCenter();
-        Coroutine otherHurtRoutine = CoroutineRunner.Play(this, other.GetHurtSequence(_character));
+        Coroutine otherHurtRoutine = CoroutineRunner.Run(this, other.GetHurtSequence(_character));
         while (_character.IsOneShotAnimationPlaying)
         {
             yield return null;

@@ -30,7 +30,7 @@ public class BattleTurnChangeAnimation : MonoBehaviour
     {
         gameObject.SetActive(true);
         CoroutineRunner.StopAll(this);
-        CoroutineRunner.Play(this, GetPlaySequence(faction));
+        CoroutineRunner.Run(this, GetPlaySequence(faction));
     }
 
     private IEnumerator GetPlaySequence(Faction faction)

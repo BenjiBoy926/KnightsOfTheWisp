@@ -19,13 +19,7 @@ public class TutorialStage : MonoBehaviour
         _players = GetComponentsInChildren<TutorialPlayer>(true);
     }
 
-    public void Record(ITutorialRecorder recorder)
-    {
-        CoroutineRunner.StopAll(this);
-        CoroutineRunner.Play(this, GetRecordSequence(recorder));
-    }
-
-    private IEnumerator GetRecordSequence(ITutorialRecorder recorder)
+    public IEnumerator GetRecordSequence(ITutorialRecorder recorder)
     {
         _input.enabled = false;
         _turnChangeAnimation.Skip = true;
@@ -42,9 +36,5 @@ public class TutorialStage : MonoBehaviour
             recorder.StopRecording();
             yield return player.Teardown();
         }
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.ExitPlaymode();
-#endif
     }
 }

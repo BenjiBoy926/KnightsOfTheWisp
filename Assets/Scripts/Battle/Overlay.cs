@@ -24,7 +24,7 @@ public class Overlay : MonoBehaviour
 
     public Coroutine FadeOut()
     {
-        return CoroutineRunner.Play(this, GetFadeOutSequence());
+        return CoroutineRunner.Run(this, GetFadeOutSequence());
     }
 
     public void SetAlpha(float alpha)

@@ -37,7 +37,7 @@ public class BattleCameraGlide : MonoBehaviour
     private Coroutine Begin(IEnumerator sequence)
     {
         CoroutineRunner.StopAll(this);
-        _coroutine = CoroutineRunner.Play(this, sequence);
+        _coroutine = CoroutineRunner.Run(this, sequence);
         return _coroutine;
     }
 

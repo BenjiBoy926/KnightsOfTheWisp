@@ -67,7 +67,7 @@ public class BattleHistory : MonoBehaviour
     public Coroutine Undo()
     {
         CoroutineRunner.StopAll(this);
-        return IsUndoAvailable() ? CoroutineRunner.Play(this, UndoToLastPlayerMovePoint()) : null;
+        return IsUndoAvailable() ? CoroutineRunner.Run(this, UndoToLastPlayerMovePoint()) : null;
     }
 
     public bool IsUndoAvailable()
@@ -78,7 +78,7 @@ public class BattleHistory : MonoBehaviour
     public Coroutine Redo()
     {
         CoroutineRunner.StopAll(this);
-        return IsRedoAvailable() ? CoroutineRunner.Play(this, RedoToLastPlayerMovePoint()) : null;
+        return IsRedoAvailable() ? CoroutineRunner.Run(this, RedoToLastPlayerMovePoint()) : null;
     }
 
     public bool IsRedoAvailable()
@@ -126,7 +126,7 @@ public class BattleHistory : MonoBehaviour
         {
             CharacterRecord recordToUndo = previousState.GetRecord(i);
             CharacterRecord olderRecord = GetLastRecordedState(recordToUndo.Character);
-            Coroutine undoRoutine = CoroutineRunner.Play(this, olderRecord.GetApplySequence());
+            Coroutine undoRoutine = CoroutineRunner.Run(this, olderRecord.GetApplySequence());
             _undoRedoRoutines.Add(undoRoutine);
         }
         foreach (var routine in _undoRedoRoutines)
@@ -146,7 +146,7 @@ public class BattleHistory : MonoBehaviour
         _undoRedoRoutines.Clear();
         foreach (var applySequence in currentState.GetAllApplySequences())
         {
-            Coroutine routine = CoroutineRunner.Play(this, applySequence);
+            Coroutine routine = CoroutineRunner.Run(this, applySequence);
             _undoRedoRoutines.Add(routine);
         }
         foreach (var routine in _undoRedoRoutines)
