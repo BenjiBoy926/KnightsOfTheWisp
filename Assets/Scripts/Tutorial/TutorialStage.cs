@@ -27,6 +27,10 @@ public class TutorialStage : MonoBehaviour
         {
             panel.gameObject.SetActive(false);
         }
+        foreach (var player in _players)
+        {
+            player.gameObject.SetActive(false);
+        }
 
         foreach (var player in _players)
         {

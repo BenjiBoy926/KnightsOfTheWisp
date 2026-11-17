@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class TutorialPlayer : MonoBehaviour
 {
+    protected readonly WaitForSeconds WaitPoint5 = new(.5f);
     protected readonly WaitForSeconds Wait1 = new(1);
     protected readonly WaitForSeconds Wait2 = new(2);
 
@@ -23,7 +24,6 @@ public abstract class TutorialPlayer : MonoBehaviour
         _battle = GetComponentInParent<Battle>();
         _player = _battle.GetComponentInChildren<Player>(true);
         _animations = GetComponentsInChildren<InputAnimator>(true);
-        gameObject.SetActive(false);
     }
 
     public virtual IEnumerator Setup()
