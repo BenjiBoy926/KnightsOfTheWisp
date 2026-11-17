@@ -376,6 +376,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.1
+  _optionalImage: {fileID: 8312305086761178994}
+  _pressedSprite: {fileID: 1001978047, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
+  _releasedSprite: {fileID: 771901932, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
 --- !u!1 &2408210451726330734
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 0.1
+  _optionalImage: {fileID: 0}
+  _pressedSprite: {fileID: 0}
+  _releasedSprite: {fileID: 0}
 --- !u!1 &5225437099535508478
 GameObject:
   m_ObjectHideFlags: 0
