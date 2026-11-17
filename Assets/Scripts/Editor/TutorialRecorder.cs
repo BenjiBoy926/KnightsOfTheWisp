@@ -4,7 +4,6 @@ using UnityEditor.Recorder;
 using UnityEditor.Recorder.Input;
 using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TutorialRecorder : ITutorialRecorder
 {
@@ -32,8 +31,8 @@ public class TutorialRecorder : ITutorialRecorder
         if (stage)
         {
             yield return stage.GetRecordSequence(new TutorialRecorder());
+            EditorApplication.ExitPlaymode();
         }
-        EditorApplication.ExitPlaymode();
     }
 
     public TutorialRecorder()
