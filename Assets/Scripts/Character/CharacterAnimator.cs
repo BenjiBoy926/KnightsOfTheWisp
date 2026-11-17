@@ -149,7 +149,7 @@ public class CharacterAnimator : MonoBehaviour
         {
             CoroutineRunner.StopAll(this);
         }
-        _oneShotRoutine = CoroutineRunner.Run(this, PlayOneShotRoutine(action));
+        _oneShotRoutine = CoroutineRunner.StartCoroutine(this, PlayOneShotRoutine(action));
         return _oneShotRoutine;
     }
 

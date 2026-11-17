@@ -68,7 +68,7 @@ public abstract class PlayerTimedAction : MonoBehaviour
         if (!IsAvailable())
             return false;
 
-        CoroutineRunner.Run(this, ExecutionSequence(duration));
+        CoroutineRunner.StartCoroutine(this, ExecutionSequence(duration));
         _ui.Begin(this, duration);
         return true;
     }

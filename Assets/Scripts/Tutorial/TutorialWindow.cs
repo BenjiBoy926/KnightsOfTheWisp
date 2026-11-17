@@ -39,7 +39,7 @@ public class TutorialWindow : MonoBehaviour
     public Coroutine Show()
     {
         gameObject.SetActive(true);
-        return CoroutineRunner.Run(this, GetDisplaySequence());
+        return CoroutineRunner.StartCoroutine(this, GetDisplaySequence());
     }
 
     private IEnumerator GetDisplaySequence()

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class Finger : MonoBehaviour
@@ -10,15 +11,27 @@ public class Finger : MonoBehaviour
         _initialPosition = transform.position;
     }
 
-    public void Press(FingerTarget target, float duration)
+    public YieldInstruction Press(FingerTarget target, float duration)
     {
-        transform.DOMove(target.transform.position, duration);
         target.Press(duration);
+        return transform.DOMove(target.transform.position, duration).WaitForCompletion();
     }
 
-    public void Release(FingerTarget target, float duration)
+    public YieldInstruction Release(FingerTarget target, float duration)
     {
-        transform.DOMove(_initialPosition, duration);
         target.Release(duration);
+        return transform.DOMove(_initialPosition, duration).WaitForCompletion();
+    }
+
+    public Coroutine Tap(FingerTarget target, float duration)
+    {
+        CoroutineRunner.StopAll(this);
+        return CoroutineRunner.StartCoroutine(this, GetTapSequence(target, duration));
+    }
+
+    private IEnumerator GetTapSequence(FingerTarget target, float duration)
+    {
+        yield return Press(target, duration);
+        yield return Release(target, duration);
     }
 }

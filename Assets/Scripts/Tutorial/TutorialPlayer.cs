@@ -16,13 +16,13 @@ public abstract class TutorialPlayer : MonoBehaviour
     private Battle _battle;
     private Player _player;
     private Character _goblin;
-    private ButtonAnimation[] _animations;
+    private InputAnimator[] _animations;
 
     private void Awake()
     {
         _battle = GetComponentInParent<Battle>();
         _player = _battle.GetComponentInChildren<Player>(true);
-        _animations = GetComponentsInChildren<ButtonAnimation>(true);
+        _animations = GetComponentsInChildren<InputAnimator>(true);
         gameObject.SetActive(false);
     }
 

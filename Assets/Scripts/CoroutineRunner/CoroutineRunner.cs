@@ -31,10 +31,10 @@ public class CoroutineRunner : MonoBehaviour
 
     public static Coroutine RunStatic(IEnumerator sequence)
     {
-        return Run(Instance, sequence);
+        return StartCoroutine(Instance, sequence);
     }
 
-    public static Coroutine Run(Object requester, IEnumerator sequence)
+    public static Coroutine StartCoroutine(Object requester, IEnumerator sequence)
     {
         if (!_coroutines.ContainsKey(requester))
         {

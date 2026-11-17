@@ -38,7 +38,7 @@ public class ContinueMarker : MonoBehaviour
     public Coroutine Wait()
     {
         CoroutineRunner.StopAll(this);
-        return CoroutineRunner.Run(this, WaitSequence());
+        return CoroutineRunner.StartCoroutine(this, WaitSequence());
     }
 
     private IEnumerator WaitSequence()

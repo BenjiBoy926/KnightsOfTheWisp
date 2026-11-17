@@ -62,7 +62,7 @@ public class CharacterEnergyNotch : MonoBehaviour
 
         KillAllTweens();
         CoroutineRunner.StopAll(this);
-        return CoroutineRunner.Run(this, GetAnimationCoroutine(previous, next));
+        return CoroutineRunner.StartCoroutine(this, GetAnimationCoroutine(previous, next));
     }
 
     public void SetState(State state)
