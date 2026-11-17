@@ -8,13 +8,13 @@ public class InputAnimator : MonoBehaviour
     [SerializeField] private Image _optionalImage;
     [SerializeField] private Sprite _pressedSprite;
     [SerializeField] private Sprite _releasedSprite;
-    private Finger _finger;
-    private FingerTarget _target;
+    private InputHand _hand;
+    private InputHandTarget _target;
 
     private void Awake()
     {
-        _finger = GetComponentInChildren<Finger>(true);
-        _target = GetComponentInChildren<FingerTarget>(true);
+        _hand = GetComponentInChildren<InputHand>(true);
+        _target = GetComponentInChildren<InputHandTarget>(true);
     }
 
     public YieldInstruction Press()
@@ -23,7 +23,7 @@ public class InputAnimator : MonoBehaviour
         {
             _optionalImage.sprite = _pressedSprite;
         }
-        return _finger.Press(_target, _duration);
+        return _hand.Press(_target, _duration);
     }
 
     public YieldInstruction Release()
@@ -32,7 +32,7 @@ public class InputAnimator : MonoBehaviour
         {
             _optionalImage.sprite = _releasedSprite;
         }
-        return _finger.Release(_target, _duration);
+        return _hand.Release(_target, _duration);
     }
 
     public void Tap()

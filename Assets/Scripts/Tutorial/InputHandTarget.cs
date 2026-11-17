@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FingerTarget : MonoBehaviour
+public class InputHandTarget : MonoBehaviour
 {
     private readonly List<GameObject> _rings = new();
 
