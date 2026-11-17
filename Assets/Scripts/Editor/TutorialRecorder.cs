@@ -23,7 +23,7 @@ public class TutorialRecorder : ITutorialRecorder
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Initialize()
     {
-        CoroutineRunner.Run(GetRecordSequence());
+        CoroutineRunner.RunStatic(GetRecordSequence());
     }
 
     private static IEnumerator GetRecordSequence()

@@ -29,7 +29,7 @@ public class CoroutineRunner : MonoBehaviour
         return _instance;
     }
 
-    public static Coroutine Run(IEnumerator sequence)
+    public static Coroutine RunStatic(IEnumerator sequence)
     {
         return Run(Instance, sequence);
     }
