@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
     public void SetPosition(Vector2 newPosition)
     {
         newPosition = _battle.ClampToField(newPosition);
-        RefreshCurrentCell();
+        SetCurrentCell(newPosition);
         SetCursorPosition(newPosition);
         SetActiveCharacterPosition(newPosition);
         CancelEndTurn();
@@ -328,9 +328,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void RefreshCurrentCell()
+    private void SetCurrentCell(Vector2 position)
     {
-        Vector2Int cell = _battle.WorldToCell(_cursor.Position);
+        Vector2Int cell = _battle.WorldToCell(position);
         SetCurrentCell(cell);
     }
 

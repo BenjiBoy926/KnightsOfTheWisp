@@ -13,6 +13,7 @@ public class Battlefield : MonoBehaviour
     private Tilemap _tilemap;
     private readonly Dictionary<Vector2Int, Character> _cellToOccupant = new();
     private readonly Dictionary<Character, Vector2Int> _occupantToCell = new();
+    [SerializeField] private List<Character> _debugOccupants = new();
     
     private void Awake()
     {
@@ -30,6 +31,9 @@ public class Battlefield : MonoBehaviour
         Vector2Int cell = WorldToCell(character.Position);
         _cellToOccupant[cell] = character;
         _occupantToCell[character] = cell;
+
+        _debugOccupants.Clear();
+        _debugOccupants.AddRange(_occupantToCell.Keys);
     }
 
     public void Unregister(Character character)
@@ -38,6 +42,9 @@ public class Battlefield : MonoBehaviour
         {
             _occupantToCell.Remove(character);
             _cellToOccupant.Remove(cell);
+
+            _debugOccupants.Clear();
+            _debugOccupants.AddRange(_occupantToCell.Keys);
         }
     }
 

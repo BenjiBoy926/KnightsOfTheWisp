@@ -49,6 +49,7 @@ public class Battle : MonoBehaviour
     private readonly HashSet<Squad> _allSquads = new();
     private readonly List<Character> _characterListScratch = new();
     private bool _isInProgress;
+    [SerializeField] private List<Character> _allCharactersDebugList = new();
 
     private void Awake()
     {
@@ -89,6 +90,9 @@ public class Battle : MonoBehaviour
         _allCharacters.Add(character);
         character.SetBattle(this);
         UniqueCharacters.Register(character);
+
+        _allCharactersDebugList.Clear();
+        _allCharactersDebugList.AddRange(_allCharacters);
     }
 
     public void Unregister(Character character)
