@@ -16,11 +16,13 @@ public abstract class TutorialPlayer : MonoBehaviour
     private Battle _battle;
     private Player _player;
     private Character _goblin;
+    private ButtonAnimation[] _animations;
 
     private void Awake()
     {
         _battle = GetComponentInParent<Battle>();
         _player = _battle.GetComponentInChildren<Player>(true);
+        _animations = GetComponentsInChildren<ButtonAnimation>(true);
         gameObject.SetActive(false);
     }
 
@@ -69,5 +71,21 @@ public abstract class TutorialPlayer : MonoBehaviour
             }
         }
         return null;
+    }
+
+    protected void AnimateButtonPress()
+    {
+        foreach (var animation in _animations)
+        {
+            animation.Press();
+        }
+    }
+
+    protected void AnimateButtonRelease()
+    {
+        foreach (var animation in _animations)
+        {
+            animation.Release();
+        }
     }
 }

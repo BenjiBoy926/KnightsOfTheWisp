@@ -10,10 +10,15 @@ public class TutorialPlayer_Attack : TutorialPlayer
     {
         yield return Wait2;
         yield return MovePlayerTo(Hayden.Position);
+
+        AnimateButtonPress();
         Player.Grab();
         yield return Wait1;
+
         yield return MovePlayerTo(Goblin.Position + (Vector2.left * .25f));
         yield return Wait1;
+
+        AnimateButtonRelease();
         yield return Player.Release();
         yield return Wait1;
     }
