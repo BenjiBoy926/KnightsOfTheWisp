@@ -3,22 +3,23 @@ using UnityEngine;
 
 public class ButtonAnimation : MonoBehaviour
 {
-    [SerializeField] private Transform _target;
     [SerializeField] private float _duration = .35f;
-    private Vector3 _initialPosition;
+    private Finger _finger;
+    private FingerTarget _target;
 
     private void Awake()
     {
-        _initialPosition = transform.position;
+        _finger = GetComponentInChildren<Finger>(true);
+        _target = GetComponentInChildren<FingerTarget>(true);
     }
 
-    public YieldInstruction Press()
+    public void Press()
     {
-        return transform.DOMove(_target.position, _duration).WaitForCompletion();
+        _finger.Press(_target, _duration);
     }
 
-    public YieldInstruction Release()
+    public void Release()
     {
-        return transform.DOMove(_initialPosition, _duration).WaitForCompletion();
+        _finger.Release(_target, _duration);
     }
 }
