@@ -11,8 +11,8 @@ public class TutorialPlayer_AttackDirection : TutorialPlayer
         yield return base.Setup();
         Player.SetPosition(Hayden.Position);
         Player.Grab();
-        Debug.Log($"Grabbed character: {Player.ActiveCharacter}", Player.ActiveCharacter);
         Player.SetPosition(Goblin.Position + Vector2.left * .25f);
+        yield return Wait2; // Don't want to capture the select audio in the video
     }
 
     public override IEnumerator Play()
