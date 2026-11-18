@@ -61,10 +61,11 @@ public class TutorialRecorder : ITutorialRecorder
         recorderSettings.Enabled = true;
 
         // Input
-        ImageInputSettings inputSettings = new GameViewInputSettings();
-        inputSettings.OutputWidth = 700;
-        inputSettings.OutputHeight = 500;
-        recorderSettings.ImageInputSettings = inputSettings;
+        recorderSettings.ImageInputSettings = new GameViewInputSettings
+        {
+            OutputWidth = 500,
+            OutputHeight = 300
+        };
 
         // Output encoder? Idk how to configure. Hopefully the default is good enough
 
