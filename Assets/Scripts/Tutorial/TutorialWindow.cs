@@ -14,6 +14,7 @@ public class TutorialWindow : MonoBehaviour
     private Overlay _overlay;
     private RectTransform _rectTransform;
     private VideoPlayer _videoPlayer;
+    private RawImage _videoImage;
     private List<Graphic> _graphicsToFade;
     private ContinueMarker _continueMarker;
 
@@ -22,6 +23,7 @@ public class TutorialWindow : MonoBehaviour
         _overlay = GetComponent<Overlay>();
         _rectTransform = transform.GetChild(0) as RectTransform;
         _videoPlayer = GetComponentInChildren<VideoPlayer>(true);
+        _videoImage = GetComponentInChildren<RawImage>(true);
         _graphicsToFade = new(GetComponentsInChildren<Graphic>(true));
         for (int i = _graphicsToFade.Count - 1; i >= 0; i--)
         {
@@ -47,6 +49,7 @@ public class TutorialWindow : MonoBehaviour
         _rectTransform.anchoredPosition = new Vector2(0, _slideOffset);
         SetAlpha(0);
         _videoPlayer.Prepare();
+        _videoImage.enabled = false;
 
         yield return _overlay.FadeIn();
 
@@ -75,6 +78,7 @@ public class TutorialWindow : MonoBehaviour
         {
             yield return null;
         }
+        _videoImage.enabled = true;
         _videoPlayer.Play();
         yield return new WaitUntil(() => _videoPlayer.frameCount > 0);
         yield return new WaitUntil(() => _videoPlayer.frame >= (long)_videoPlayer.frameCount - 1);

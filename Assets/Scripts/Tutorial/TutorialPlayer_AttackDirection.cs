@@ -17,18 +17,16 @@ public class TutorialPlayer_AttackDirection : TutorialPlayer
 
     public override IEnumerator Play()
     {
-        yield return Wait2;
-        
+        yield return WaitPoint5;
         yield return MovePlayerTo(Goblin.Position + Vector2.down * .25f);
-        yield return WaitPoint5;
 
+        yield return WaitPoint5;
         yield return MovePlayerTo(Goblin.Position + Vector2.right * .25f);
-        yield return WaitPoint5;
 
+        yield return WaitPoint5;
         yield return MovePlayerTo(Goblin.Position + Vector2.up * .25f);
-        yield return WaitPoint5;
 
+        yield return WaitPoint5;
         yield return MovePlayerTo(Goblin.Position + Vector2.left * .25f);
-        yield return Wait1;
     }
 }
