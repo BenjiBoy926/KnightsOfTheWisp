@@ -8,7 +8,7 @@ public class TutorialPlayer_Attack : TutorialPlayer
 
     public override IEnumerator Play()
     {
-        yield return Wait2;
+        yield return Wait1;
         yield return MovePlayerTo(Hayden.Position);
 
         AnimateButtonPress();
