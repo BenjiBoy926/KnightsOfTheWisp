@@ -51,8 +51,7 @@ public class TutorialWindow : MonoBehaviour
         _videoPlayer.Prepare();
         _videoImage.enabled = false;
 
-        yield return _overlay.FadeIn();
-
+        _overlay.FadeIn();
         FadeAlpha(1);
         yield return _rectTransform.DOAnchorPosY(0, _slideDuration)
             .SetEase(_slideEase)
@@ -62,12 +61,11 @@ public class TutorialWindow : MonoBehaviour
 
         yield return _continueMarker.Wait();
 
+        _overlay.FadeOut();
         FadeAlpha(0);
         yield return _rectTransform.DOAnchorPosY(_slideOffset, _slideDuration)
             .SetEase(_slideEase)
             .WaitForCompletion();
-
-        yield return _overlay.FadeOut();
 
         gameObject.SetActive(false);
     }
