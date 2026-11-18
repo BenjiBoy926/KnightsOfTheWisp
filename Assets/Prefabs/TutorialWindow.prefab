@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f6dd8ff32273c4596135253e3570e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeDuration: 0.35
+  _fadeDuration: 0.5
   _fadeAlpha: 0.5
 --- !u!114 &2709545905731820633
 MonoBehaviour:
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42519426a0414954c84aa77a19b06403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slideDuration: 0.35
+  _slideDuration: 0.5
   _slideOffset: 100
   _slideEase: 15
 --- !u!1 &6255155777814579255
