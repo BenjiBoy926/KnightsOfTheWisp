@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 6850431688726287411}
   - component: {fileID: 9189418693397764037}
   m_Layer: 0
-  m_Name: Message
+  m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,6 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42519426a0414954c84aa77a19b06403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: cf0aa20e8f726f944862f9ad9be2d92c, type: 2}
+  _title: {fileID: 4286867146449019190}
+  _description: {fileID: 9189418693397764037}
   _slideDuration: 0.5
   _slideOffset: 100
   _slideEase: 15

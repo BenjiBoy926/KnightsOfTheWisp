@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -8,9 +9,15 @@ using UnityEngine.Video;
 [RequireComponent(typeof(Overlay))]
 public class TutorialWindow : MonoBehaviour
 {
+    [SerializeField] private TutorialData _data;
+    [SerializeField] private TMP_Text _title;
+    [SerializeField] private TMP_Text _description;
+
+    [Space]
     [SerializeField] private float _slideDuration = 0.35f;
     [SerializeField] private float _slideOffset = 100f;
     [SerializeField] private Ease _slideEase = Ease.OutQuint;
+
     private Overlay _overlay;
     private RectTransform _rectTransform;
     private VideoPlayer _videoPlayer;
@@ -25,6 +32,11 @@ public class TutorialWindow : MonoBehaviour
         _videoPlayer = GetComponentInChildren<VideoPlayer>(true);
         _videoImage = GetComponentInChildren<RawImage>(true);
         _graphicsToFade = new(GetComponentsInChildren<Graphic>(true));
+        _continueMarker = GetComponentInChildren<ContinueMarker>(true);
+
+        _title.text = _data.Title;
+        _videoPlayer.url = _data.VideoUrl;
+        _description.text = _data.Description;
         for (int i = _graphicsToFade.Count - 1; i >= 0; i--)
         {
             Graphic graphic = _graphicsToFade[i];
@@ -33,8 +45,6 @@ public class TutorialWindow : MonoBehaviour
                 _graphicsToFade.RemoveAt(i);
             }
         }
-
-        _continueMarker = GetComponentInChildren<ContinueMarker>(true);
         gameObject.SetActive(false);
     }
 
