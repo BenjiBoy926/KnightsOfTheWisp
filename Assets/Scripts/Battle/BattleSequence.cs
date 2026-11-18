@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BattleSequence : MonoBehaviour
 {
+    // TODO: add a distinction between move end before target dies and move end after they die
     public enum TriggerType
     {
         MoveStart,
@@ -26,6 +27,7 @@ public abstract class BattleSequence : MonoBehaviour
         _battle = GetComponentInParent<Battle>();
     }
 
+    // TODO: put "TriggerType" parameter into this method, then pack all three parameters into one parameter object with some handy properties and methods
     public abstract bool ShouldPlay(Character interactor, Character target);
     public IEnumerator Play(Character interactor, Character target)
     {
