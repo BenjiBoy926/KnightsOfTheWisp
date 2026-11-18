@@ -6,10 +6,13 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugIntro : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.TurnStart;
-
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
+            if (trigger != TriggerType.TurnStart)
+            {
+                return false;
+            }
+
             Squad grugSquad = Battle.GetSquad(Grug);
             bool isSquadAwake = grugSquad && (grugSquad.ShouldWakeUp() || grugSquad.IsAwake);
             bool areEnoughPlayersAlive = (Robin.IsAlive || Hayden.IsAlive) && (Gregory.IsAlive || Alfred.IsAlive);

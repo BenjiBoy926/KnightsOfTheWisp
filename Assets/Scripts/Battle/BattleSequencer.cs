@@ -40,7 +40,7 @@ public class BattleSequencer : MonoBehaviour
         _isPlaying = true;
         foreach (var sequence in _sequences)
         {
-            if (sequence.Trigger == trigger && sequence.ShouldPlay(interactor, target))
+            if (sequence.ShouldPlay(trigger, interactor, target))
             {
                 yield return sequence.Play(interactor, target);
             }

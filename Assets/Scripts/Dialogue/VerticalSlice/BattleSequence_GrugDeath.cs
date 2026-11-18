@@ -5,11 +5,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugDeath : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.MoveEnd;
-
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
-            return !HasPlayed && (interactor == Grug || target == Grug) && Grug.IsDead;
+            return trigger == TriggerType.MoveEnd && !HasPlayed && (interactor == Grug || target == Grug) && Grug.IsDead;
         }
 
         protected override IEnumerator GetSequence(Character interactor, Character target)

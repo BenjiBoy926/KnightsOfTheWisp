@@ -3,8 +3,6 @@ using System.Collections;
 [UnityEngine.RequireComponent(typeof(TutorialWindow))]
 public class BattleSequence_CancelTutorial : BattleSequence
 {
-    public override TriggerType Trigger => TriggerType.MoveEnd;
-
     private TutorialWindow _window;
 
     private void Awake()
@@ -12,9 +10,9 @@ public class BattleSequence_CancelTutorial : BattleSequence
         _window = GetComponent<TutorialWindow>();
     }
 
-    public override bool ShouldPlay(Character interactor, Character target)
+    public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
     {
-        return !HasPlayed && interactor && target && interactor.Faction != target.Faction;
+        return trigger == TriggerType.MoveEnd && !HasPlayed && interactor && target && interactor.Faction != target.Faction;
     }
 
     protected override IEnumerator GetSequence(Character interactor, Character target)

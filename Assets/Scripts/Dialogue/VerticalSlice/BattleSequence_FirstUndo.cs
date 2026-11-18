@@ -5,11 +5,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_FirstUndo : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.UndoRedoEnd;
-
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
-            return !HasPlayed;
+            return trigger == TriggerType.UndoRedoEnd && !HasPlayed;
         }
 
         protected override IEnumerator GetSequence(Character interactor, Character target)

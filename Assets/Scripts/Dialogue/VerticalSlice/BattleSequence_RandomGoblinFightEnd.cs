@@ -6,8 +6,6 @@ namespace VerticalSlice
     [RequireComponent(typeof(Character))]
     public class BattleSequence_RandomGoblinFightEnd : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.MoveEnd;
-
         private Character _goblin;
         private bool _hasPlayedKillLine;
         private bool _hasPlayedDeathLine;
@@ -17,8 +15,13 @@ namespace VerticalSlice
             _goblin = GetComponent<Character>();
         }
 
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
+            if (trigger != TriggerType.MoveEnd)
+            {
+                return false;
+            }
+
             bool isEitherCharacterTheGoblin = interactor == _goblin || target == _goblin;
             bool hasPlayedBothLines = _hasPlayedDeathLine && _hasPlayedKillLine;
             return isEitherCharacterTheGoblin && interactor && target && !hasPlayedBothLines;

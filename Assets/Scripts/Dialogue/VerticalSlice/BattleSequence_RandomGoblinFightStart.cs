@@ -6,8 +6,6 @@ namespace VerticalSlice
     [RequireComponent(typeof(Character))]
     public class BattleSequence_RandomGoblinFightStart : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.MoveStart;
-
         private Character _goblin;
 
         private void Awake()
@@ -15,9 +13,9 @@ namespace VerticalSlice
             _goblin = GetComponent<Character>();
         }
 
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
-            return !HasPlayed && (interactor == _goblin || target == _goblin) && interactor && target;
+            return trigger == TriggerType.MoveStart && !HasPlayed && (interactor == _goblin || target == _goblin) && interactor && target;
         }
 
         protected override IEnumerator GetSequence(Character interactor, Character target)

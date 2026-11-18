@@ -6,13 +6,16 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugFightStart : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.MoveStart;
-
         private bool _haydenLinePlayed = false;
         private bool _genericLinePlayed = false;
 
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
+            if (trigger != TriggerType.MoveStart)
+            {
+                return false;
+            }
+
             Character playerCharacter = GetPlayerCharacter(interactor, target);
             bool isSomeoneGrug = interactor == Grug || target == Grug;
             return isSomeoneGrug && target != null && (ShouldPlayHaydenLine(playerCharacter) || !_genericLinePlayed);

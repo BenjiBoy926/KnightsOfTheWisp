@@ -4,11 +4,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_AllEnemiesDefeated : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.MoveEnd;
-
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
-            return !HasPlayed && Battle.AreAllEnemiesDead() && !Battle.AreAllPlayersAlive();
+            return trigger == TriggerType.MoveEnd && !HasPlayed && Battle.AreAllEnemiesDead() && !Battle.AreAllPlayersAlive();
         }
 
         protected override IEnumerator GetSequence(Character interactor, Character target)

@@ -15,7 +15,6 @@ public abstract class BattleSequence : MonoBehaviour
 
     protected Battle Battle => _battle;
     public bool HasPlayed => _timesPlayed > 0;
-    public abstract TriggerType Trigger { get; }
     public static readonly Comparison<BattleSequence> Comparison = (a, b) => a._executionOrder.CompareTo(b._executionOrder);
 
     [SerializeField] private int _executionOrder = 0;
@@ -27,8 +26,8 @@ public abstract class BattleSequence : MonoBehaviour
         _battle = GetComponentInParent<Battle>();
     }
 
-    // TODO: put "TriggerType" parameter into this method, then pack all three parameters into one parameter object with some handy properties and methods
-    public abstract bool ShouldPlay(Character interactor, Character target);
+    // TODO: pack all three parameters into one parameter object with some handy properties and methods
+    public abstract bool ShouldPlay(TriggerType trigger, Character interactor, Character target);
     public IEnumerator Play(Character interactor, Character target)
     {
         _timesPlayed++;

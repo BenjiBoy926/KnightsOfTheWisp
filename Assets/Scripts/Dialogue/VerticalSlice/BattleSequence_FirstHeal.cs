@@ -5,8 +5,6 @@ namespace VerticalSlice
 {
     public class BattleSequence_FirstHeal : BattleSequence
     {
-        public override TriggerType Trigger => TriggerType.MoveEnd;
-
         private BattleSequence_FirstReviveFinish _reviveFinish;
 
         private void Awake()
@@ -14,8 +12,13 @@ namespace VerticalSlice
             _reviveFinish = GetComponent<BattleSequence_FirstReviveFinish>();
         }
 
-        public override bool ShouldPlay(Character interactor, Character target)
+        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
         {
+            if (trigger != TriggerType.MoveEnd)
+            {
+                return false;
+            }
+
             bool didHeal = target && interactor.Faction == target.Faction;
             bool didRevive = target && target.GetLastRecordedState().Health <= 0;
             bool hasReviveDialoguePlayed = _reviveFinish && _reviveFinish.HasPlayed;
