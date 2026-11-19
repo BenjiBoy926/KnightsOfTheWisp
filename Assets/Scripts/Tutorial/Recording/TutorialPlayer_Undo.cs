@@ -23,6 +23,6 @@ public class TutorialPlayer_Undo : TutorialPlayer
         yield return new WaitUntil(() => BattleHistory.IsAnySequencePlaying);
         AnimateInputRelease();
         yield return new WaitUntil(() => !BattleHistory.IsAnySequencePlaying);
-        yield return Wait1;
+        yield return Wait2;
     }
 }
