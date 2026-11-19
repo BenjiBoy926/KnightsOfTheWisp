@@ -6,7 +6,7 @@ namespace VerticalSlice
     {
         public override bool ShouldPlay(BattleEvent e)
         {
-            return e.Type == BattleEvent.EventType.MoveEnd && !HasPlayed && Battle.AreAllEnemiesDead() && !Battle.AreAllPlayersAlive();
+            return e.Type == BattleEvent.EventType.AfterMoveEnd && !HasPlayed && Battle.AreAllEnemiesDead() && !Battle.AreAllPlayersAlive();
         }
 
         protected override IEnumerator GetSequence(BattleEvent e)

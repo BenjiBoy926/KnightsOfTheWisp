@@ -7,7 +7,7 @@ namespace VerticalSlice
     {
         public override bool ShouldPlay(BattleEvent e)
         {
-            if (e.Type != BattleEvent.EventType.MoveEnd)
+            if (e.Type != BattleEvent.EventType.BeforeMoveEnd)
             {
                 return false;
             }

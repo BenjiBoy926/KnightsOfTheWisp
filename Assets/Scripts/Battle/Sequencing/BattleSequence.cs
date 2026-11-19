@@ -12,7 +12,7 @@ public abstract class BattleSequence : MonoBehaviour
     private Battle _battle;
     private int _timesPlayed = 0;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _battle = GetComponentInParent<Battle>();
     }

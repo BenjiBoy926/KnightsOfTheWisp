@@ -6,8 +6,9 @@ public class BattleSequence_AttackTutorial : BattleSequence
 {
     private TutorialWindow _window;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _window = GetComponent<TutorialWindow>();
     }
 

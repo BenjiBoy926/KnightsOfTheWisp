@@ -3,7 +3,8 @@ public class BattleEvent
     public enum EventType
     {
         MoveStart,
-        MoveEnd,
+        BeforeMoveEnd,
+        AfterMoveEnd,
         TurnStart,
         UndoRedoEnd
     }
@@ -21,9 +22,14 @@ public class BattleEvent
         return new(EventType.MoveStart, interactor, target);
     }
 
-    public static BattleEvent MoveEnd(Character interactor, Character target)
+    public static BattleEvent BeforeMoveEnd(Character interactor, Character target)
     {
-        return new(EventType.MoveEnd, interactor, target);
+        return new(EventType.BeforeMoveEnd, interactor, target);
+    }
+
+    public static BattleEvent AfterMoveEnd(Character interactor, Character target)
+    {
+        return new(EventType.AfterMoveEnd, interactor, target);
     }
 
     public static BattleEvent TurnStart()

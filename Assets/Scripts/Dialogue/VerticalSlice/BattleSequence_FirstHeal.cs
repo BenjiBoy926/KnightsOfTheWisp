@@ -8,14 +8,15 @@ namespace VerticalSlice
     {
         private BattleSequence_FirstReviveFinish _reviveFinish;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _reviveFinish = GetComponent<BattleSequence_FirstReviveFinish>();
         }
 
         public override bool ShouldPlay(BattleEvent e)
         {
-            if (e.Type != BattleEvent.EventType.MoveEnd)
+            if (e.Type != BattleEvent.EventType.BeforeMoveEnd)
             {
                 return false;
             }

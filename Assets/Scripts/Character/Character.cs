@@ -225,19 +225,10 @@ public class Character : MonoBehaviour
 
     public IEnumerator EndMoveSequence(Character other)
     {
-        yield return _battle.GetSequence(BattleEvent.MoveEnd(this, other));
+        yield return _battle.GetSequence(BattleEvent.BeforeMoveEnd(this, other));
 
+        WaitInProfile(other);
         ChangeEnergy(-1);
-
-        Vector2 direction = GetHorizontalDirectionAwayFromPreviousCell();
-        if (IsAlive)
-        {
-            SetDirection(direction);
-        }
-        if (other && other.IsAlive)
-        {
-            other.SetDirection(-direction);
-        }
 
         if (other)
         {
@@ -245,7 +236,6 @@ public class Character : MonoBehaviour
         }
         yield return FadeAppearanceToTargetState();
 
-        SetIsActing(false);
         if (other)
         {
             RecordMoveWith(other);
@@ -254,7 +244,28 @@ public class Character : MonoBehaviour
         {
             RecordMove();
         }
+
+        yield return _battle.GetSequence(BattleEvent.AfterMoveEnd(this, other));
+
+        SetIsActing(false);
         _battle.NotifyCharacterMoveFinished(this, other);
+    }
+
+    private void WaitInProfile(Character other)
+    {
+        Vector2 direction = GetDirection();
+        if (Mathf.Approximately(direction.y, 0))
+            return;
+
+        direction = GetHorizontalDirectionAwayFromPreviousCell();
+        if (IsAlive)
+        {
+            SetDirection(direction);
+        }
+        if (other && other.IsAlive)
+        {
+            other.SetDirection(-direction);
+        }
     }
 
     private Vector2 GetHorizontalDirectionAwayFromPreviousCell()

@@ -45,6 +45,10 @@ public class TutorialWindow : MonoBehaviour
                 _graphicsToFade.RemoveAt(i);
             }
         }
+    }
+
+    private void Start()
+    {
         gameObject.SetActive(false);
     }
 

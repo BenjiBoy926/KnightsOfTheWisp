@@ -8,8 +8,9 @@ namespace VerticalSlice
     {
         private Character _goblin;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _goblin = GetComponent<Character>();
         }
 

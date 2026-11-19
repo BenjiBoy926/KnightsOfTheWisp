@@ -10,14 +10,15 @@ namespace VerticalSlice
         private bool _hasPlayedKillLine;
         private bool _hasPlayedDeathLine;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             _goblin = GetComponent<Character>();
         }
 
         public override bool ShouldPlay(BattleEvent e)
         {
-            if (e.Type != BattleEvent.EventType.MoveEnd)
+            if (e.Type != BattleEvent.EventType.BeforeMoveEnd)
             {
                 return false;
             }
