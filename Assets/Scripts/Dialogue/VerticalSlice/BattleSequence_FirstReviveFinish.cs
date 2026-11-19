@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEngine;
 using static UniqueCharacters;
 
 namespace VerticalSlice
@@ -8,7 +7,7 @@ namespace VerticalSlice
     {
         public override bool ShouldPlay(BattleEvent e)
         {
-            return e.Type == BattleEvent.EventType.MoveEnd && !HasPlayed && e.Target && e.Interactor.Faction == e.Target.Faction && e.Target.GetLastRecordedState().Health <= 0;
+            return e.Type == BattleEvent.EventType.MoveEnd && !HasPlayed && e.IsRevive;
         }
 
         protected override IEnumerator GetSequence(BattleEvent e)

@@ -8,6 +8,10 @@ public class BattleEvent
         UndoRedoEnd
     }
 
+    public bool IsAttack => Interactor && Target && Interactor.Faction != Target.Faction;
+    public bool IsHeal => Interactor && Target && Interactor.Faction == Target.Faction;
+    public bool IsRevive => IsHeal && Target.GetLastRecordedState().Health <= 0;
+
     public readonly EventType Type;
     public readonly Character Interactor;
     public readonly Character Target;

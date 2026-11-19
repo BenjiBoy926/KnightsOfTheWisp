@@ -29,4 +29,30 @@ public abstract class BattleSequence : MonoBehaviour
     {
         _timesPlayed--;
     }
+
+    protected Character GetPlayer(BattleEvent e)
+    {
+        if (e.Interactor && e.Interactor.Faction == _battle.PlayerFaction)
+        {
+            return e.Interactor;
+        }
+        if (e.Target && e.Target.Faction == _battle.PlayerFaction)
+        {
+            return e.Target;
+        }
+        return null;
+    }
+
+    protected Character GetEnemy(BattleEvent e)
+    {
+        if (e.Interactor && e.Interactor.Faction != _battle.PlayerFaction)
+        {
+            return e.Interactor;
+        }
+        if (e.Target && e.Target.Faction != _battle.PlayerFaction)
+        {
+            return e.Target;
+        }
+        return null;
+    }
 }

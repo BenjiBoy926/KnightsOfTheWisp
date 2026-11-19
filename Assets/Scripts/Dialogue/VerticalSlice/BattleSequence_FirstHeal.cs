@@ -3,6 +3,7 @@ using static UniqueCharacters;
 
 namespace VerticalSlice
 {
+    [UnityEngine.RequireComponent(typeof(BattleSequence_FirstReviveFinish))]
     public class BattleSequence_FirstHeal : BattleSequence
     {
         private BattleSequence_FirstReviveFinish _reviveFinish;
@@ -19,10 +20,8 @@ namespace VerticalSlice
                 return false;
             }
 
-            bool didHeal = e.Target && e.Interactor.Faction == e.Target.Faction;
-            bool didRevive = e.Target && e.Target.GetLastRecordedState().Health <= 0;
             bool hasReviveDialoguePlayed = _reviveFinish && _reviveFinish.HasPlayed;
-            return !HasPlayed && didHeal && !didRevive && !hasReviveDialoguePlayed;
+            return !HasPlayed && e.IsHeal && !e.IsRevive && !hasReviveDialoguePlayed;
         }
 
         protected override IEnumerator GetSequence(BattleEvent e)
