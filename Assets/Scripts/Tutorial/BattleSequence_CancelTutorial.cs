@@ -10,12 +10,12 @@ public class BattleSequence_CancelTutorial : BattleSequence
         _window = GetComponent<TutorialWindow>();
     }
 
-    public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+    public override bool ShouldPlay(BattleEvent e)
     {
-        return trigger == BattleEvent.EventType.MoveEnd && !HasPlayed && interactor && target && interactor.Faction != target.Faction;
+        return e.Type == BattleEvent.EventType.MoveEnd && !HasPlayed && e.Interactor && e.Target && e.Interactor.Faction != e.Target.Faction;
     }
 
-    protected override IEnumerator GetSequence(Character interactor, Character target)
+    protected override IEnumerator GetSequence(BattleEvent e)
     {
         yield return _window.Show();
     }

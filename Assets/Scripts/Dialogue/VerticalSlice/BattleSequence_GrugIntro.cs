@@ -6,9 +6,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugIntro : BattleSequence
     {
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            if (trigger != BattleEvent.EventType.TurnStart)
+            if (e.Type != BattleEvent.EventType.TurnStart)
             {
                 return false;
             }
@@ -19,7 +19,7 @@ namespace VerticalSlice
             return !HasPlayed && Battle.CurrentFactionTurn != Battle.PlayerFaction && isSquadAwake && !Grug.IsDead && areEnoughPlayersAlive;
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
             yield return Battle.CameraGlide(Grug.transform);
             yield return Grug.Say("Tsk. They're a tenacious lot, I'll give them that.");

@@ -17,14 +17,13 @@ public abstract class BattleSequence : MonoBehaviour
         _battle = GetComponentInParent<Battle>();
     }
 
-    // TODO: pack all three parameters into one parameter object with some handy properties and methods
-    public abstract bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target);
-    public IEnumerator Play(Character interactor, Character target)
+    public abstract bool ShouldPlay(BattleEvent e);
+    public IEnumerator Play(BattleEvent e)
     {
         _timesPlayed++;
-        return GetSequence(interactor, target);
+        return GetSequence(e);
     }
-    protected abstract IEnumerator GetSequence(Character interactor, Character target);
+    protected abstract IEnumerator GetSequence(BattleEvent e);
 
     protected void Cancel()
     {

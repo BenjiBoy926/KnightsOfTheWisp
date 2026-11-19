@@ -20,9 +20,9 @@ public class BattleSequencer : MonoBehaviour
         _isPlaying = true;
         foreach (var sequence in _sequences)
         {
-            if (sequence.ShouldPlay(e.Type, e.Interactor, e.Target))
+            if (sequence.ShouldPlay(e))
             {
-                yield return sequence.Play(e.Interactor, e.Target);
+                yield return sequence.Play(e);
             }
         }
         _isPlaying = false;

@@ -4,14 +4,14 @@ namespace VerticalSlice
 {
     public class BattleSequence_AllEnemiesDefeated : BattleSequence
     {
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            return trigger == BattleEvent.EventType.MoveEnd && !HasPlayed && Battle.AreAllEnemiesDead() && !Battle.AreAllPlayersAlive();
+            return e.Type == BattleEvent.EventType.MoveEnd && !HasPlayed && Battle.AreAllEnemiesDead() && !Battle.AreAllPlayersAlive();
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
-            Character player = IsPlayerCharacter(interactor) ? interactor : target;
+            Character player = IsPlayerCharacter(e.Interactor) ? e.Interactor : e.Target;
 
             string[] line1 = new string[]
             {

@@ -9,21 +9,21 @@ namespace VerticalSlice
         private bool _haydenLinePlayed = false;
         private bool _genericLinePlayed = false;
 
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            if (trigger != BattleEvent.EventType.MoveStart)
+            if (e.Type != BattleEvent.EventType.MoveStart)
             {
                 return false;
             }
 
-            Character playerCharacter = GetPlayerCharacter(interactor, target);
-            bool isSomeoneGrug = interactor == Grug || target == Grug;
-            return isSomeoneGrug && target != null && (ShouldPlayHaydenLine(playerCharacter) || !_genericLinePlayed);
+            Character playerCharacter = GetPlayerCharacter(e.Interactor, e.Target);
+            bool isSomeoneGrug = e.Interactor == Grug || e.Target == Grug;
+            return isSomeoneGrug && e.Target != null && (ShouldPlayHaydenLine(playerCharacter) || !_genericLinePlayed);
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
-            Character playerCharacter = GetPlayerCharacter(interactor, target);
+            Character playerCharacter = GetPlayerCharacter(e.Interactor, e.Target);
             if (ShouldPlayHaydenLine(playerCharacter))
             {
                 _haydenLinePlayed = true;

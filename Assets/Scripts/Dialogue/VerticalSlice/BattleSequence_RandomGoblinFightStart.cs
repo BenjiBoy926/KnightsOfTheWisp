@@ -13,14 +13,14 @@ namespace VerticalSlice
             _goblin = GetComponent<Character>();
         }
 
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            return trigger == BattleEvent.EventType.MoveStart && !HasPlayed && (interactor == _goblin || target == _goblin) && interactor && target;
+            return e.Type == BattleEvent.EventType.MoveStart && !HasPlayed && (e.Interactor == _goblin || e.Target == _goblin) && e.Interactor && e.Target;
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
-            Character other = interactor == _goblin ? target : interactor;
+            Character other = e.Interactor == _goblin ? e.Target : e.Interactor;
             yield return _goblin.Say("Glory to Ha'all!");
             yield return Dialogue.FirstMatchingMainCharacterSay(other,
                 "Ha'all? Who's Ha'all?",

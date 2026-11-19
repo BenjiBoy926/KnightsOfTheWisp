@@ -5,14 +5,14 @@ namespace VerticalSlice
 {
     public class BattleSequence_FirstDeath : BattleSequence
     {
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            return trigger == BattleEvent.EventType.MoveEnd && !HasPlayed && (IsDeadPlayerCharacter(interactor) || IsDeadPlayerCharacter(target));
+            return e.Type == BattleEvent.EventType.MoveEnd && !HasPlayed && (IsDeadPlayerCharacter(e.Interactor) || IsDeadPlayerCharacter(e.Target));
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
-            Character deadPlayer = IsDeadPlayerCharacter(interactor) ? interactor : target;
+            Character deadPlayer = IsDeadPlayerCharacter(e.Interactor) ? e.Interactor : e.Target;
 
             string exclamation1 = $"{deadPlayer.Name}?";
             string exclamation2 = $"{deadPlayer.Name.ToUpper()}!! NO!!";

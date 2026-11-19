@@ -5,19 +5,19 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugKill : BattleSequence
     {
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            if (trigger != BattleEvent.EventType.MoveEnd)
+            if (e.Type != BattleEvent.EventType.MoveEnd)
             {
                 return false;
             }
 
-            bool isSomeoneGrug = Grug == interactor || Grug == target;
-            bool isSomeoneDeadPlayerCharacter = IsDeadPlayer(interactor) || IsDeadPlayer(target);
+            bool isSomeoneGrug = Grug == e.Interactor || Grug == e.Target;
+            bool isSomeoneDeadPlayerCharacter = IsDeadPlayer(e.Interactor) || IsDeadPlayer(e.Target);
             return !HasPlayed && Grug.IsAlive && isSomeoneGrug && isSomeoneDeadPlayerCharacter;
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
             yield return Grug.Say("Grahahaaa!");
             yield return Grug.Say("Pathetic! You deserve only subjugation under Ha'all and his hordes!");

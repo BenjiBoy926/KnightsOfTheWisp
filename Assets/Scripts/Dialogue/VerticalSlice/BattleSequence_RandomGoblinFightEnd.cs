@@ -15,21 +15,21 @@ namespace VerticalSlice
             _goblin = GetComponent<Character>();
         }
 
-        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent e)
         {
-            if (trigger != BattleEvent.EventType.MoveEnd)
+            if (e.Type != BattleEvent.EventType.MoveEnd)
             {
                 return false;
             }
 
-            bool isEitherCharacterTheGoblin = interactor == _goblin || target == _goblin;
+            bool isEitherCharacterTheGoblin = e.Interactor == _goblin || e.Target == _goblin;
             bool hasPlayedBothLines = _hasPlayedDeathLine && _hasPlayedKillLine;
-            return isEitherCharacterTheGoblin && interactor && target && !hasPlayedBothLines;
+            return isEitherCharacterTheGoblin && e.Interactor && e.Target && !hasPlayedBothLines;
         }
 
-        protected override IEnumerator GetSequence(Character interactor, Character target)
+        protected override IEnumerator GetSequence(BattleEvent e)
         {
-            Character other = interactor == _goblin ? target : interactor;
+            Character other = e.Interactor == _goblin ? e.Target : e.Interactor;
             if (_goblin.IsDead)
             {
                 yield return PlayDeadLine(other);
