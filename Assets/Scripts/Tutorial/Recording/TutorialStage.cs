@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Battle))]
 public class TutorialStage : MonoBehaviour
 {
-    private Battle _battle;
+    private BattleCondition _battleCondition;
     private PlayerInput _input;
     private BattleTurnChangeAnimation _turnChangeAnimation;
     private CharacterDetailPanel[] _detailPanels;
@@ -12,7 +12,7 @@ public class TutorialStage : MonoBehaviour
 
     private void Awake()
     {
-        _battle = GetComponent<Battle>();
+        _battleCondition = GetComponentInChildren<BattleCondition>(true);
         _input = GetComponentInChildren<PlayerInput>(true);
         _turnChangeAnimation = GetComponentInChildren<BattleTurnChangeAnimation>(true);
         _detailPanels = GetComponentsInChildren<CharacterDetailPanel>(true);
@@ -21,8 +21,9 @@ public class TutorialStage : MonoBehaviour
 
     public IEnumerator GetRecordSequence(ITutorialRecorder recorder)
     {
+        _battleCondition.enabled = false;
         _input.enabled = false;
-        _turnChangeAnimation.Skip = true;
+        _turnChangeAnimation.enabled = false;
         foreach (var panel in _detailPanels)
         {
             panel.gameObject.SetActive(false);

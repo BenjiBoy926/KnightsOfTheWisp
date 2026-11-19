@@ -12,7 +12,7 @@ public class BattleCondition : MonoBehaviour
 
     public bool IsWinConditionMet()
     {
-        return AreAllEnemiesDead() && AreAllPlayersAlive();
+        return enabled && AreAllEnemiesDead() && AreAllPlayersAlive();
     }
 
     public bool AreAllPlayersAlive()
