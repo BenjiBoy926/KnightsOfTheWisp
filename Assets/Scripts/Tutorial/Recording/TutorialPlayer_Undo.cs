@@ -11,10 +11,7 @@ public class TutorialPlayer_Undo : TutorialPlayer
 
         Player.Grab();
         yield return Wait1;
-
         yield return MovePlayerTo(Vector2.right * 2);
-        yield return Wait1;
-
         yield return Player.Release();
         yield return Wait1;
 
@@ -23,6 +20,6 @@ public class TutorialPlayer_Undo : TutorialPlayer
         yield return new WaitUntil(() => BattleHistory.IsAnySequencePlaying);
         AnimateInputRelease();
         yield return new WaitUntil(() => !BattleHistory.IsAnySequencePlaying);
-        yield return Wait2;
+        yield return Wait1;
     }
 }
