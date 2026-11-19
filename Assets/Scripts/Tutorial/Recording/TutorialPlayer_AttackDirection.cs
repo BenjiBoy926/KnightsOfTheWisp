@@ -29,4 +29,11 @@ public class TutorialPlayer_AttackDirection : TutorialPlayer
         yield return WaitPoint5;
         yield return MovePlayerTo(Goblin.Position + Vector2.left * .25f);
     }
+
+    public override IEnumerator Teardown()
+    {
+        yield return base.Teardown();
+        // Deselect the goblin in the center
+        Player.SetPosition(Vector2.right * 5);
+    }
 }
