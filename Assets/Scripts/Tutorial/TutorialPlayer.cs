@@ -40,6 +40,7 @@ public abstract class TutorialPlayer : MonoBehaviour
 
     public virtual IEnumerator Teardown()
     {
+        _player.CancelMove();
         gameObject.SetActive(false);
         yield return null;
     }
@@ -73,7 +74,7 @@ public abstract class TutorialPlayer : MonoBehaviour
         return null;
     }
 
-    protected void AnimateButtonPress()
+    protected void AnimateInputPress()
     {
         foreach (var animation in _animations)
         {
@@ -81,11 +82,19 @@ public abstract class TutorialPlayer : MonoBehaviour
         }
     }
 
-    protected void AnimateButtonRelease()
+    protected void AnimateInputRelease()
     {
         foreach (var animation in _animations)
         {
             animation.Release();
+        }
+    }
+
+    protected void AnimateInputTap()
+    {
+        foreach (var animation in _animations)
+        {
+            animation.Tap();
         }
     }
 }

@@ -11,14 +11,14 @@ public class TutorialPlayer_Attack : TutorialPlayer
         yield return Wait1;
         yield return MovePlayerTo(Hayden.Position);
 
-        AnimateButtonPress();
+        AnimateInputPress();
         Player.Grab();
         yield return Wait1;
 
         yield return MovePlayerTo(Goblin.Position + (Vector2.left * .25f));
         yield return Wait1;
 
-        AnimateButtonRelease();
+        AnimateInputRelease();
         yield return Player.Release();
         yield return Wait1;
     }
