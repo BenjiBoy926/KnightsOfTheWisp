@@ -18,6 +18,6 @@ public class BattleSequence_CancelTutorial : BattleSequence
 
     protected override IEnumerator GetSequence(BattleEvent e)
     {
-        yield return _window.Show();
+        yield return _window.Open();
     }
 }

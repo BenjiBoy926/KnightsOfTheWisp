@@ -52,7 +52,7 @@ public class TutorialWindow : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public Coroutine Show()
+    public Coroutine Open()
     {
         gameObject.SetActive(true);
         return CoroutineRunner.StartCoroutine(this, GetDisplaySequence());

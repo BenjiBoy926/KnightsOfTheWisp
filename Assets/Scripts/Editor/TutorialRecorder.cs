@@ -44,7 +44,7 @@ public class TutorialRecorder : ITutorialRecorder
 
     public void StartRecording(TutorialData data)
     {
-        _recorderSettings.OutputFile = data.VideoUrl;
+        _recorderSettings.OutputFile = data.RecorderPath;
         _recorder.PrepareRecording();
         _recorder.StartRecording();
     }
