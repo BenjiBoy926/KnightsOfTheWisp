@@ -17,25 +17,25 @@ public class BattleSequencer : MonoBehaviour
 
     public IEnumerator GetMoveStartSequence(Character interactor, Character target)
     {
-        return GetSequence(BattleSequence.TriggerType.MoveStart, interactor, target);
+        return GetSequence(BattleEvent.TriggerType.MoveStart, interactor, target);
     }
 
     public IEnumerator GetMoveFinishSequence(Character interactor, Character target)
     {
-        return GetSequence(BattleSequence.TriggerType.MoveEnd, interactor, target);
+        return GetSequence(BattleEvent.TriggerType.MoveEnd, interactor, target);
     }
 
     public IEnumerator GetTurnStartSequence()
     {
-        return GetSequence(BattleSequence.TriggerType.TurnStart, null, null);
+        return GetSequence(BattleEvent.TriggerType.TurnStart, null, null);
     }
 
     public IEnumerator GetUndoRedoEndSequence()
     {
-        return GetSequence(BattleSequence.TriggerType.UndoRedoEnd, null, null);
+        return GetSequence(BattleEvent.TriggerType.UndoRedoEnd, null, null);
     }
 
-    private IEnumerator GetSequence(BattleSequence.TriggerType trigger, Character interactor, Character target)
+    private IEnumerator GetSequence(BattleEvent.TriggerType trigger, Character interactor, Character target)
     {
         _isPlaying = true;
         foreach (var sequence in _sequences)

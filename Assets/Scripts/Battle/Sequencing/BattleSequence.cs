@@ -3,16 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 public abstract class BattleSequence : MonoBehaviour
-{
-    // TODO: add a distinction between move end before target dies and move end after they die
-    public enum TriggerType
-    {
-        MoveStart,
-        MoveEnd,
-        TurnStart,
-        UndoRedoEnd
-    }
-
+{    
     protected Battle Battle => _battle;
     public bool HasPlayed => _timesPlayed > 0;
     public static readonly Comparison<BattleSequence> Comparison = (a, b) => a._executionOrder.CompareTo(b._executionOrder);
@@ -27,7 +18,7 @@ public abstract class BattleSequence : MonoBehaviour
     }
 
     // TODO: pack all three parameters into one parameter object with some handy properties and methods
-    public abstract bool ShouldPlay(TriggerType trigger, Character interactor, Character target);
+    public abstract bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target);
     public IEnumerator Play(Character interactor, Character target)
     {
         _timesPlayed++;

@@ -6,9 +6,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugIntro : BattleSequence
     {
-        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
         {
-            if (trigger != TriggerType.TurnStart)
+            if (trigger != BattleEvent.TriggerType.TurnStart)
             {
                 return false;
             }

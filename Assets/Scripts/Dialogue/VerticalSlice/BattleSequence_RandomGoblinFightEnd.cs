@@ -15,9 +15,9 @@ namespace VerticalSlice
             _goblin = GetComponent<Character>();
         }
 
-        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
         {
-            if (trigger != TriggerType.MoveEnd)
+            if (trigger != BattleEvent.TriggerType.MoveEnd)
             {
                 return false;
             }

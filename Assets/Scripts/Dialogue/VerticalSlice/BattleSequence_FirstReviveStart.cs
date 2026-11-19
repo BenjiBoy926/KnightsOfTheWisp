@@ -4,9 +4,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_FirstReviveStart : BattleSequence
     {
-        public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
         {
-            return trigger == TriggerType.MoveStart && !HasPlayed && target && interactor.Faction == target.Faction && target.IsDead;
+            return trigger == BattleEvent.TriggerType.MoveStart && !HasPlayed && target && interactor.Faction == target.Faction && target.IsDead;
         }
 
         protected override IEnumerator GetSequence(Character interactor, Character target)

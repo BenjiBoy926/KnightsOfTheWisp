@@ -11,9 +11,9 @@ public class BattleSequence_AttackTutorial : BattleSequence
         _window = GetComponent<TutorialWindow>();
     }
 
-    public override bool ShouldPlay(TriggerType trigger, Character interactor, Character target)
+    public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
     {
-        return trigger == TriggerType.TurnStart && !HasPlayed;
+        return trigger == BattleEvent.TriggerType.TurnStart && !HasPlayed;
     }
 
     protected override IEnumerator GetSequence(Character interactor, Character target)
