@@ -29,6 +29,7 @@ public class BattleHistory : MonoBehaviour
 
     public void RecordInitialState()
     {
+        _states.Clear();
         RecordTurnChange(_battle.AllCharacters, _battle.PlayerFaction);
         _currentStateIndex = 0;
     }

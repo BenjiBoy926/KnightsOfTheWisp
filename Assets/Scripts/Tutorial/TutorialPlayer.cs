@@ -40,9 +40,8 @@ public abstract class TutorialPlayer : MonoBehaviour
 
     public virtual IEnumerator Teardown()
     {
-        _player.CancelMove();
+        yield return _player.CancelMove();
         gameObject.SetActive(false);
-        yield return null;
     }
 
     protected YieldInstruction MovePlayerTo(Vector2 position)

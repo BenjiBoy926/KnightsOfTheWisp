@@ -12,7 +12,7 @@ public class TutorialPlayer_AttackDirection : TutorialPlayer
         Player.SetPosition(Hayden.Position);
         Player.Grab();
         Player.SetPosition(Goblin.Position + Vector2.left * .25f);
-        yield return Wait2; // Don't want to capture the select audio in the video
+        yield return Wait1; // Don't want to capture the select audio in the video
     }
 
     public override IEnumerator Play()
