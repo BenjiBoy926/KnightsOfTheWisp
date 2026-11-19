@@ -15,34 +15,14 @@ public class BattleSequencer : MonoBehaviour
         Array.Sort(_sequences, BattleSequence.Comparison);
     }
 
-    public IEnumerator GetMoveStartSequence(Character interactor, Character target)
-    {
-        return GetSequence(BattleEvent.TriggerType.MoveStart, interactor, target);
-    }
-
-    public IEnumerator GetMoveFinishSequence(Character interactor, Character target)
-    {
-        return GetSequence(BattleEvent.TriggerType.MoveEnd, interactor, target);
-    }
-
-    public IEnumerator GetTurnStartSequence()
-    {
-        return GetSequence(BattleEvent.TriggerType.TurnStart, null, null);
-    }
-
-    public IEnumerator GetUndoRedoEndSequence()
-    {
-        return GetSequence(BattleEvent.TriggerType.UndoRedoEnd, null, null);
-    }
-
-    private IEnumerator GetSequence(BattleEvent.TriggerType trigger, Character interactor, Character target)
+    public IEnumerator GetSequence(BattleEvent e)
     {
         _isPlaying = true;
         foreach (var sequence in _sequences)
         {
-            if (sequence.ShouldPlay(trigger, interactor, target))
+            if (sequence.ShouldPlay(e.Type, e.Interactor, e.Target))
             {
-                yield return sequence.Play(interactor, target);
+                yield return sequence.Play(e.Interactor, e.Target);
             }
         }
         _isPlaying = false;

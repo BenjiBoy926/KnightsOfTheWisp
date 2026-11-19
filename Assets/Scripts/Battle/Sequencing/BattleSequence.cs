@@ -18,7 +18,7 @@ public abstract class BattleSequence : MonoBehaviour
     }
 
     // TODO: pack all three parameters into one parameter object with some handy properties and methods
-    public abstract bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target);
+    public abstract bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target);
     public IEnumerator Play(Character interactor, Character target)
     {
         _timesPlayed++;

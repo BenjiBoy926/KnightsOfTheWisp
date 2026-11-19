@@ -5,9 +5,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_GrugKill : BattleSequence
     {
-        public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
         {
-            if (trigger != BattleEvent.TriggerType.MoveEnd)
+            if (trigger != BattleEvent.EventType.MoveEnd)
             {
                 return false;
             }

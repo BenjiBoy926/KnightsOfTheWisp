@@ -368,23 +368,8 @@ public class Battle : MonoBehaviour
 
     // Sequencer ===
 
-    public IEnumerator GetMoveStartSequence(Character interactor, Character target)
+    public IEnumerator GetSequence(BattleEvent e)
     {
-        return _sequencer.GetMoveStartSequence(interactor, target);
-    }
-
-    public IEnumerator GetMoveFinishSequence(Character interactor, Character target)
-    {
-        return _sequencer.GetMoveFinishSequence(interactor, target);
-    }
-
-    public IEnumerator GetTurnStartSequence()
-    {
-        return _sequencer.GetTurnStartSequence();
-    }
-
-    public IEnumerator GetUndoRedoEndSequence()
-    {
-        return _sequencer.GetUndoRedoEndSequence();
+        return _sequencer.GetSequence(e);
     }
 }

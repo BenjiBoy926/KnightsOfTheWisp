@@ -5,9 +5,9 @@ namespace VerticalSlice
 {
     public class BattleSequence_FirstDeath : BattleSequence
     {
-        public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
         {
-            return trigger == BattleEvent.TriggerType.MoveEnd && !HasPlayed && (IsDeadPlayerCharacter(interactor) || IsDeadPlayerCharacter(target));
+            return trigger == BattleEvent.EventType.MoveEnd && !HasPlayed && (IsDeadPlayerCharacter(interactor) || IsDeadPlayerCharacter(target));
         }
 
         protected override IEnumerator GetSequence(Character interactor, Character target)

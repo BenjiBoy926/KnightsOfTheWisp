@@ -46,7 +46,7 @@ public class BattleTurnChangeAnimation : MonoBehaviour
         yield return _overlay.FadeOut();
         _isPlaying = false;
 
-        yield return _battle.GetTurnStartSequence();
+        yield return _battle.GetSequence(BattleEvent.TurnStart());
     }
 
     private bool ShouldSkip()

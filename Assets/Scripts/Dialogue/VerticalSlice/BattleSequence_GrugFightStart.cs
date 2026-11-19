@@ -9,9 +9,9 @@ namespace VerticalSlice
         private bool _haydenLinePlayed = false;
         private bool _genericLinePlayed = false;
 
-        public override bool ShouldPlay(BattleEvent.TriggerType trigger, Character interactor, Character target)
+        public override bool ShouldPlay(BattleEvent.EventType trigger, Character interactor, Character target)
         {
-            if (trigger != BattleEvent.TriggerType.MoveStart)
+            if (trigger != BattleEvent.EventType.MoveStart)
             {
                 return false;
             }
