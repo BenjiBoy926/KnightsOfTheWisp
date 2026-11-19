@@ -42,10 +42,9 @@ public class TutorialRecorder : ITutorialRecorder
         _recorder = new(controllerSettings);
     }
 
-    // NOTE: need to change file name here
-    public void StartRecording(string tutorialName)
+    public void StartRecording(TutorialData data)
     {
-        _recorderSettings.FileNameGenerator.FileName = $"Tutorial_{tutorialName}";
+        _recorderSettings.OutputFile = data.VideoUrl;
         _recorder.PrepareRecording();
         _recorder.StartRecording();
     }
@@ -68,10 +67,6 @@ public class TutorialRecorder : ITutorialRecorder
         };
 
         // Output encoder? Idk how to configure. Hopefully the default is good enough
-
-        // Output File
-        recorderSettings.FileNameGenerator.Root = OutputPath.Root.StreamingAssets;
-        recorderSettings.FileNameGenerator.Leaf = "";
 
         return recorderSettings;
     }

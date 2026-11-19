@@ -5,8 +5,6 @@ using static UniqueCharacters;
 
 public class TutorialPlayer_Heal : TutorialPlayer
 {
-    public override string Name => "Heal";
-
     public override IEnumerator Setup()
     {
         yield return base.Setup();

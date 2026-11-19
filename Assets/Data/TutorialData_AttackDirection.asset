@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: TutorialData_AttackDirection
   m_EditorClassIdentifier: 
   _title: Attack Direction
-  _videoFileName: Tutorial_AttackDirection
-  _description: The pointer's position determines the attack's direction
+  _description: The pointer's position determines the attack's direction.

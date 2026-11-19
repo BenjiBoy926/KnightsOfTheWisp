@@ -4,8 +4,6 @@ using static UniqueCharacters;
 
 public class TutorialPlayer_Cancel : TutorialPlayer
 {
-    public override string Name => "Cancel";
-
     public override IEnumerator Play()
     {
         yield return Wait1;

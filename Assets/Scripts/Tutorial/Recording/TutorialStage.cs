@@ -36,7 +36,7 @@ public class TutorialStage : MonoBehaviour
         foreach (var player in _players)
         {
             yield return player.Setup();
-            recorder.StartRecording(player.Name);
+            recorder.StartRecording(player.Data);
             yield return player.Play();
             recorder.StopRecording();
             yield return player.Teardown();

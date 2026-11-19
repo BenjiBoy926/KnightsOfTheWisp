@@ -4,8 +4,6 @@ using static UniqueCharacters;
 
 public class TutorialPlayer_AttackDirection : TutorialPlayer
 {
-    public override string Name => "AttackDirection";
-
     public override IEnumerator Setup()
     {
         yield return base.Setup();

@@ -1,5 +1,5 @@
 public interface ITutorialRecorder
 {
-    void StartRecording(string tutorialName);
+    void StartRecording(TutorialData data);
     void StopRecording();
 }

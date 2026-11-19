@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: TutorialData_Attack
   m_EditorClassIdentifier: 
   _title: Attack
-  _videoFileName: Tutorial_Attack
-  _description: Drag and drop a knight onto a goblin to attack
+  _description: Drag and drop a knight onto a goblin to attack.

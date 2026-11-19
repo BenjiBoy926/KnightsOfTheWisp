@@ -8,11 +8,12 @@ public abstract class TutorialPlayer : MonoBehaviour
     protected readonly WaitForSeconds Wait1 = new(1);
     protected readonly WaitForSeconds Wait2 = new(2);
 
-    public abstract string Name { get; }
+    public TutorialData Data => _data;
     protected Battle Battle => _battle;
     protected Player Player => _player;
     protected Character Goblin => _goblin;
 
+    [SerializeField] private TutorialData _data;
     [SerializeField] private float _playerMoveSpeed = 2f;
     private Battle _battle;
     private Player _player;
