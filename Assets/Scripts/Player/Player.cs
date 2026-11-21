@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(RangeWarningSystem))]
 public class Player : MonoBehaviour
 {
+    public Character CharacterAtCurrentCell => _characterAtCurrentCell;
     public Character ActiveCharacter => _activeCharacter;
     public Faction Faction => _faction;
     public Transform CommanderTransform => _faction.CommanderTransform;
@@ -380,7 +381,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private bool IsTargettingOtherCharacter()
+    public bool IsTargettingOtherCharacter()
     {
         return _activeCharacter && _characterAtCurrentCell && _characterAtCurrentCell != _activeCharacter;
     }

@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerCursor : MonoBehaviour
 {
+    public enum Mode
+    {
+        Torch, Pointer, Aura, None
+    }
+
     public Vector2 Position
     {
         get => transform.position;
@@ -12,8 +17,7 @@ public class PlayerCursor : MonoBehaviour
     private Player _player;
     private PlayerCursorFire _fire;
     private PlayerSelectionAura _aura;
-    private bool _isVisible = false;
-    private bool _isNearTarget = false;
+    private Mode _currentMode;
 
     private void Awake()
     {
@@ -37,27 +41,12 @@ public class PlayerCursor : MonoBehaviour
 
     private void Update()
     {
-        SetIsVisible(_player.IsInputAllowed);
-        if (_player.ActiveCharacter)
-        {
-            Vector2 targetPosition = _player.ActiveCharacter.Position;
-            float distance = Vector2.Distance(Position, targetPosition);
-            SetIsNearSelectionTarget(distance <= _selectionMargin);
-        }
-        else
-        {
-            SetIsNearSelectionTarget(false);
-        }
+        SetCurrentMode(CalculateCurrentMode());
     }
 
     public void Show()
     {
-        SetIsVisible(true);
-    }
-
-    public void Hide()
-    {
-        SetIsVisible(false);
+        SetCurrentMode(Mode.Torch);
     }
 
     public void Burst()
@@ -65,40 +54,42 @@ public class PlayerCursor : MonoBehaviour
         _fire.Burst();
     }
 
-    private void SetIsVisible(bool isVisible)
+    private Mode CalculateCurrentMode()
     {
-        if (_isVisible == isVisible)
-            return;
-
-        _isVisible = isVisible;
-        ReflectVisibility();
-    }
-
-    private void SetIsNearSelectionTarget(bool isNearTarget)
-    {
-        if (_isNearTarget == isNearTarget)
-            return;
-
-        _isNearTarget = isNearTarget;
-        ReflectVisibility();
-    }
-
-    private void ReflectVisibility()
-    {
-        if (!_isVisible)
+        if (!_player.IsInputAllowed)
         {
-            _fire.Hide();
-            _aura.Hide();
+            return Mode.None;
         }
-        else if (_isNearTarget)
+        else if (!_player.ActiveCharacter)
         {
-            _fire.Hide();
-            _aura.Show();
+            return Mode.Torch;
+        }
+
+        Vector2 targetPosition = _player.ActiveCharacter.Position;
+        float distance = Vector2.Distance(Position, targetPosition);
+        bool isNear = distance <= _selectionMargin;
+        if (isNear)
+        {
+            return Mode.Aura;
+        }
+        else if (_player.IsTargettingOtherCharacter())
+        {
+            return Mode.Pointer;
         }
         else
         {
-            _fire.Show();
-            _aura.Hide();
+            return Mode.Torch;
         }
+    }
+
+    private void SetCurrentMode(Mode currentMode)
+    {
+        if (currentMode == _currentMode)
+            return;
+
+        _currentMode = currentMode;
+        _fire.Burst();
+        _fire.SetIsVisible(_currentMode == Mode.Torch);
+        _aura.SetIsVisible(_currentMode == Mode.Aura);
     }
 }

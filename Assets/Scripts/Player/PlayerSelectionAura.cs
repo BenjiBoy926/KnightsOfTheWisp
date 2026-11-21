@@ -13,6 +13,18 @@ public class PlayerSelectionAura : MonoBehaviour
         transform.localScale = Vector3.zero;
     }
 
+    public void SetIsVisible(bool isVisible)
+    {
+        if (isVisible)
+        {
+            Show();
+        }
+        else
+        {
+            Hide();
+        }
+    }
+
     public void Show()
     {
         _showHideTween?.Kill();

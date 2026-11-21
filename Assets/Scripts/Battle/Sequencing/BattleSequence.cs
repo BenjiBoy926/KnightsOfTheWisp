@@ -20,6 +20,9 @@ public abstract class BattleSequence : MonoBehaviour
     public abstract bool ShouldPlay(BattleEvent e);
     public IEnumerator Play(BattleEvent e)
     {
+        if (!enabled && Application.isEditor)
+            return null;
+
         _timesPlayed++;
         return GetSequence(e);
     }
