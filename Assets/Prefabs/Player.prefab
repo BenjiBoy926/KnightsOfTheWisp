@@ -1789,6 +1789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07895e57931beb44595190880b177537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pointerParticles: {fileID: 2103345479781715463}
   _selectionMargin: 0.1
 --- !u!114 &3971295484566185272
 MonoBehaviour:
@@ -2551,5 +2552,10 @@ PrefabInstance:
 --- !u!4 &1840815805504487536 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7800046302039599656, guid: cd810ede1aecf2d4894c51cb6385becb, type: 3}
+  m_PrefabInstance: {fileID: 8481598550880184920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2103345479781715463 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7531185571972932703, guid: cd810ede1aecf2d4894c51cb6385becb, type: 3}
   m_PrefabInstance: {fileID: 8481598550880184920}
   m_PrefabAsset: {fileID: 0}

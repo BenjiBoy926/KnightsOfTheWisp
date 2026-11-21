@@ -13,6 +13,7 @@ public class PlayerCursor : MonoBehaviour
         set => transform.position = value;
     }
 
+    [SerializeField] private ParticleSystem _pointerParticles;
     [SerializeField] private float _selectionMargin = .25f;
     private Player _player;
     private PlayerCursorFire _fire;
@@ -42,6 +43,11 @@ public class PlayerCursor : MonoBehaviour
     private void Update()
     {
         SetCurrentMode(CalculateCurrentMode());
+        if (_currentMode == Mode.Pointer)
+        {
+            Vector2 direction = _player.CharacterAtCurrentCell.CurrentCellCenter - _player.ActiveCharacter.CurrentCellCenter;
+            transform.up = direction;
+        }
     }
 
     public void Show()
@@ -88,8 +94,21 @@ public class PlayerCursor : MonoBehaviour
             return;
 
         _currentMode = currentMode;
+        if (_currentMode != Mode.Pointer)
+        {
+            transform.up = Vector3.up;
+        }
+
         _fire.Burst();
         _fire.SetIsVisible(_currentMode == Mode.Torch);
         _aura.SetIsVisible(_currentMode == Mode.Aura);
+        if (_currentMode == Mode.Pointer)
+        {
+            _pointerParticles.Play();
+        }
+        else
+        {
+            _pointerParticles.Stop();
+        }
     }
 }
