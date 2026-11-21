@@ -280,7 +280,6 @@ public class Player : MonoBehaviour
             _activeCharacter.HideRange();
         }        
         _activeCharacter = activeCharacter;
-        _cursor.SetSelectionTarget(_activeCharacter ? _activeCharacter.transform : null);
         _actionDirectionIndicator.SetTargeter(_activeCharacter);
         RefreshWarningSystem();
         RefreshDetailPanel();

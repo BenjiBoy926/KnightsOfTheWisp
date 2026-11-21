@@ -9,14 +9,15 @@ public class PlayerCursor : MonoBehaviour
     }
 
     [SerializeField] private float _selectionMargin = .25f;
+    private Player _player;
     private PlayerCursorFire _fire;
     private PlayerSelectionAura _aura;
-    private Transform _selectionTarget;
     private bool _isVisible = false;
     private bool _isNearTarget = false;
 
     private void Awake()
     {
+        _player = GetComponentInParent<Player>();
         _fire = GetComponentInChildren<PlayerCursorFire>(true);
         _aura = GetComponentInChildren<PlayerSelectionAura>(true);
     }
@@ -36,12 +37,16 @@ public class PlayerCursor : MonoBehaviour
 
     private void Update()
     {
-        if (_selectionTarget == null)
-            return;
-
-        Vector2 targetPosition = _selectionTarget.position;
-        float distance = Vector2.Distance(Position, targetPosition);
-        SetIsNearSelectionTarget(distance <= _selectionMargin);
+        if (_player.ActiveCharacter)
+        {
+            Vector2 targetPosition = _player.ActiveCharacter.Position;
+            float distance = Vector2.Distance(Position, targetPosition);
+            SetIsNearSelectionTarget(distance <= _selectionMargin);
+        }
+        else
+        {
+            SetIsNearSelectionTarget(false);
+        }
     }
 
     public void Show()
@@ -52,15 +57,6 @@ public class PlayerCursor : MonoBehaviour
     public void Hide()
     {
         SetIsVisible(false);
-    }
-
-    public void SetSelectionTarget(Transform target)
-    {
-        _selectionTarget = target;
-        if (!_selectionTarget)
-        {
-            SetIsNearSelectionTarget(false);
-        }
     }
 
     public void Burst()
