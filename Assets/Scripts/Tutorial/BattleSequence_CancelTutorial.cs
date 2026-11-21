@@ -13,7 +13,7 @@ public class BattleSequence_CancelTutorial : BattleSequence
 
     public override bool ShouldPlay(BattleEvent e)
     {
-        return e.Type == BattleEvent.EventType.AfterMoveEnd && !HasPlayed && e.IsAttack && Battle.CurrentFactionTurn == Battle.PlayerFaction;
+        return e.Type == BattleEvent.EventType.AfterMoveEnd && !HasPlayed && Battle.CurrentFactionTurn == Battle.PlayerFaction;
     }
 
     protected override IEnumerator GetSequence(BattleEvent e)

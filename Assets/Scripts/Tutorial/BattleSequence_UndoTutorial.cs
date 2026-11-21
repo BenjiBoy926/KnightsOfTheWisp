@@ -1,8 +1,10 @@
 using System.Collections;
+using UnityEngine;
 
-[UnityEngine.RequireComponent(typeof(TutorialWindow))]
+[RequireComponent(typeof(TutorialWindow))]
 public class BattleSequence_UndoTutorial : BattleSequence
 {
+    [SerializeField] private BattleSequence_HealTutorial _healTutorial;
     private TutorialWindow _window;
 
     protected override void Awake()
@@ -13,7 +15,7 @@ public class BattleSequence_UndoTutorial : BattleSequence
 
     public override bool ShouldPlay(BattleEvent e)
     {
-        throw new System.NotImplementedException();
+        return e.Type == BattleEvent.EventType.TurnStart && !HasPlayed && _healTutorial.HasPlayed && Battle.CurrentFactionTurn == Battle.PlayerFaction;
     }
 
     protected override IEnumerator GetSequence(BattleEvent e)
