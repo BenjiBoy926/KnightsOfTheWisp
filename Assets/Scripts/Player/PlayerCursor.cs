@@ -37,6 +37,7 @@ public class PlayerCursor : MonoBehaviour
 
     private void Update()
     {
+        SetIsVisible(_player.IsInputAllowed);
         if (_player.ActiveCharacter)
         {
             Vector2 targetPosition = _player.ActiveCharacter.Position;

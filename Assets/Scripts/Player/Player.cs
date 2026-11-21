@@ -422,12 +422,10 @@ public class Player : MonoBehaviour
         _isInputAllowed = isInputAllowed;
         if (isInputAllowed)
         {
-            _cursor.Show();
             RefreshHoveredCharacter();
         }
         else
         {
-            _cursor.Hide();
             _detailPanel.Hide();
             Deselect();
         }
