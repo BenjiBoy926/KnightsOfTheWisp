@@ -17,6 +17,12 @@ public abstract class BattleSequence : MonoBehaviour
         _battle = GetComponentInParent<Battle>();
     }
 
+    // So that the "enabled" checkbox exists in editor
+    private void Start()
+    {
+        
+    }
+
     public abstract bool ShouldPlay(BattleEvent e);
     public IEnumerator Play(BattleEvent e)
     {
