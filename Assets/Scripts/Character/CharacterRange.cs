@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(CharacterRangeDisplay))]
 public class CharacterRange : MonoBehaviour
 {
-    private const float ClampMargin = 0.1f;
+    private const float ClampMargin = 1e-3f;
 
     public HashSet<Vector2Int> AllCells => _allCells;
 
