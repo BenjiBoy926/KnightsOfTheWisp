@@ -58,16 +58,11 @@ public class TutorialRecorder : ITutorialRecorder
     {
         MovieRecorderSettings recorderSettings = ScriptableObject.CreateInstance<MovieRecorderSettings>();
         recorderSettings.Enabled = true;
-
-        // Input
         recorderSettings.ImageInputSettings = new GameViewInputSettings
         {
-            OutputWidth = 500,
-            OutputHeight = 300
+            OutputWidth = 1000,
+            OutputHeight = 600
         };
-
-        // Output encoder? Idk how to configure. Hopefully the default is good enough
-
         return recorderSettings;
     }
 

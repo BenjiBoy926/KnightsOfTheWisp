@@ -145,9 +145,16 @@ public class Player : MonoBehaviour
 
     public void SetPosition(Vector2 newPosition)
     {
-        newPosition = _battle.ClampToField(newPosition);
+        if (_activeCharacter)
+        {
+            newPosition = _activeCharacter.ClampToReachableCells(newPosition);
+        }
+        else
+        {
+            newPosition = _battle.ClampToField(newPosition);
+        }
+        _cursor.Position = newPosition;
         SetCurrentCell(newPosition);
-        SetCursorPosition(newPosition);
         SetActiveCharacterPosition(newPosition);
         CancelEndTurn();
     }
@@ -235,15 +242,6 @@ public class Player : MonoBehaviour
         ClearPreview();
         SetHoveredCharacter(null);
         SetActiveCharacter(null);
-    }
-
-    private void SetCursorPosition(Vector2 newPosition)
-    {
-        if (_activeCharacter)
-        {
-            newPosition = _activeCharacter.ClampToReachableCells(newPosition);
-        }
-        _cursor.Position = newPosition;
     }
 
     private void SetActiveCharacterPosition(Vector2 newPosition)
