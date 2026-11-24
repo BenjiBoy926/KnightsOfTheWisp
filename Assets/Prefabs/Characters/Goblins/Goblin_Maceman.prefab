@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: _name
       value: Goblin Maceman
       objectReference: {fileID: 0}
+    - target: {fileID: 384918300480114987, guid: c5a411f1aa0d5ca4eb136bdcfbb95549, type: 3}
+      propertyPath: _weaponAudio
+      value: 
+      objectReference: {fileID: 11400000, guid: 2319f196e14c03f4bb2b35c7e49f8117, type: 2}
     - target: {fileID: 1109634835707249660, guid: c5a411f1aa0d5ca4eb136bdcfbb95549, type: 3}
       propertyPath: m_Controller
       value: 

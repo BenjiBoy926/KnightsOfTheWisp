@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602be55a3921b75449831186e1242596, type: 3}
-  m_Name: WeaponAudio_MetalSlash
+  m_Name: WeaponAudio_GoblinBlunt
   m_EditorClassIdentifier: 
   _windUp:
   - {fileID: 8300000, guid: 420fcb268723f8b48ab1e8b3d4c9fe16, type: 3}
@@ -18,12 +18,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d21bd4937bad4f544a6810afdc74ecde, type: 3}
   - {fileID: 8300000, guid: 3fadfa3eae9a17840816106c5069d973, type: 3}
   _slash:
-  - {fileID: 8300000, guid: 81f3ba502b98cd943a811f637ffdf35a, type: 3}
-  - {fileID: 8300000, guid: bf8dc70e084275443a2573c5637673ce, type: 3}
-  - {fileID: 8300000, guid: 714ccc2ea863e4b4a93b3d01de05f457, type: 3}
+  - {fileID: 8300000, guid: d16c65199f048aa4382381f88b73174d, type: 3}
+  - {fileID: 8300000, guid: d44534ed543cb1d4e9b9e3e849da00ce, type: 3}
+  - {fileID: 8300000, guid: 26fed8649034f3f43af75d5ab696b496, type: 3}
   _hit:
-  - {fileID: 8300000, guid: 7f149b041579ad745b533a9b0b0e2d7c, type: 3}
-  - {fileID: 8300000, guid: ad506c96d674b974884f744c436a3eaa, type: 3}
-  - {fileID: 8300000, guid: 54096697613628645b389de7d2ae7915, type: 3}
-  - {fileID: 8300000, guid: c3767479654aba64bb75303cd0e926c2, type: 3}
-  - {fileID: 8300000, guid: 3bbd3d61d0637b7438b3871c4ff08ce0, type: 3}
+  - {fileID: 8300000, guid: 0ad2b1a44af81e142922fc393a979083, type: 3}
+  - {fileID: 8300000, guid: cefbf18dd23a2c447a70c25c9b46c6c0, type: 3}
+  - {fileID: 8300000, guid: a67e757178519384eaf53600ddad4e2f, type: 3}
+  - {fileID: 8300000, guid: 9cfa57188d62a3b4a92066b3ea817ac5, type: 3}
+  - {fileID: 8300000, guid: 63d7d34814898d84da534f9bb272319c, type: 3}

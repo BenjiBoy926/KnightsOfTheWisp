@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: _faction
       value: 
       objectReference: {fileID: 11400000, guid: f0825ffdbfea0a042898fd68e2767291, type: 2}
+    - target: {fileID: 4700560474708384779, guid: 542580a0ea76df14eb58af1decf3516f, type: 3}
+      propertyPath: _weaponAudio
+      value: 
+      objectReference: {fileID: 11400000, guid: da4da8c807baa89469a7cb09594b8136, type: 2}
     - target: {fileID: 5407144191760060124, guid: 542580a0ea76df14eb58af1decf3516f, type: 3}
       propertyPath: m_Controller
       value: 
