@@ -16,7 +16,6 @@ public class CharacterUI : MonoBehaviour
     
     private SortingGroup _sortingGroup;
     private int _defaultSortingLayer;
-    private bool _isPreviewing = false;
 
     private void Awake()
     {
@@ -27,15 +26,6 @@ public class CharacterUI : MonoBehaviour
 
         _sortingGroup = GetComponent<SortingGroup>();
         _defaultSortingLayer = _sortingGroup.sortingLayerID;
-    }
-
-    private void Update()
-    {
-        if (_isPreviewing)
-        {
-            Vector2 cellCenter = _character.CurrentCellCenter;
-            transform.position = cellCenter;
-        }
     }
 
     public void Show()
@@ -55,15 +45,12 @@ public class CharacterUI : MonoBehaviour
         _healthUI.Preview(info);
         _energyUI.Preview(info);
         _sortingGroup.sortingLayerID = _previewSortingLayer;
-        _isPreviewing = true;
     }
 
     public void ClearPreview()
     {
         _healthUI.ClearPreview();
         _energyUI.ClearPreview();
-        _isPreviewing = false;
-        transform.localPosition = Vector3.zero;
         _sortingGroup.sortingLayerID = _defaultSortingLayer;
     }
 
