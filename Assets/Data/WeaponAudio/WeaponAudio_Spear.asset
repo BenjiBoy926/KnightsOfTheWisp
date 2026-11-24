@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602be55a3921b75449831186e1242596, type: 3}
+  m_Name: WeaponAudio_Spear
+  m_EditorClassIdentifier: 
+  _windUp:
+  - {fileID: 8300000, guid: 420fcb268723f8b48ab1e8b3d4c9fe16, type: 3}
+  - {fileID: 8300000, guid: aa2051cea786f214a9bcff718141ed69, type: 3}
+  - {fileID: 8300000, guid: d21bd4937bad4f544a6810afdc74ecde, type: 3}
+  - {fileID: 8300000, guid: 3fadfa3eae9a17840816106c5069d973, type: 3}
+  _slash:
+  - {fileID: 8300000, guid: 81f3ba502b98cd943a811f637ffdf35a, type: 3}
+  - {fileID: 8300000, guid: bf8dc70e084275443a2573c5637673ce, type: 3}
+  - {fileID: 8300000, guid: 714ccc2ea863e4b4a93b3d01de05f457, type: 3}
+  _hit:
+  - {fileID: 8300000, guid: 851209b9af67d39448bc49ec83ae78a7, type: 3}
+  - {fileID: 8300000, guid: bf9e779da76de364288002baadc81af4, type: 3}
+  - {fileID: 8300000, guid: 8e79b0914d4951c40b14878f34a4896e, type: 3}
