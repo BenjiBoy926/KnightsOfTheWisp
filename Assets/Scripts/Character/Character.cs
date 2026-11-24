@@ -513,6 +513,11 @@ public class Character : MonoBehaviour
         _range.Hide();
     }
 
+    public Vector2Int ClosestStayableCell(Vector2 position)
+    {
+        return _range.ClosestCell(position, _range.StayableCells);
+    }
+
     public Vector2 ClampToStayableCells(Vector2 position)
     {
         return _range.ClampToStayableCells(position);

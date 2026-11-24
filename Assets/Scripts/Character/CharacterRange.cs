@@ -10,6 +10,7 @@ public class CharacterRange : MonoBehaviour
     private const float ClampMargin = 1e-3f;
 
     public HashSet<Vector2Int> AllCells => _allCells;
+    public HashSet<Vector2Int> StayableCells => _stayableCells;
 
     [SerializeField] private List<TileBase> _wallTiles = new();
     private Character _character;
@@ -133,7 +134,7 @@ public class CharacterRange : MonoBehaviour
         return new(x, y);
     }
 
-    private Vector2Int ClosestCell(Vector2 input, HashSet<Vector2Int> cells)
+    public Vector2Int ClosestCell(Vector2 input, HashSet<Vector2Int> cells)
     {
         Vector2Int inputCell = _character.WorldToCell(input);
         if (cells.Count == 0) return inputCell;

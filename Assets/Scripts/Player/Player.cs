@@ -250,7 +250,15 @@ public class Player : MonoBehaviour
             return;
 
         _activeCharacter.LookAt(newPosition);
-        _activeCharacter.Position = _activeCharacter.ClampToStayableCells(newPosition);
+        if (IsTargettingOtherCharacter())
+        {
+            Vector2Int cell = _activeCharacter.ClosestStayableCell(newPosition);
+            _activeCharacter.Position = _battle.CellToWorld(cell);
+        }
+        else
+        {
+            _activeCharacter.Position = _activeCharacter.ClampToStayableCells(newPosition);
+        }
         _activeCharacter.RefreshCell();
     }
 
