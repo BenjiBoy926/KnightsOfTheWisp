@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 602be55a3921b75449831186e1242596, type: 3}
-  m_Name: WeaponAudio_Sword
+  m_Name: WeaponAudio_MetalStab
   m_EditorClassIdentifier: 
   _windUp:
   - {fileID: 8300000, guid: 420fcb268723f8b48ab1e8b3d4c9fe16, type: 3}
@@ -22,8 +22,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bf8dc70e084275443a2573c5637673ce, type: 3}
   - {fileID: 8300000, guid: 714ccc2ea863e4b4a93b3d01de05f457, type: 3}
   _hit:
-  - {fileID: 8300000, guid: 7f149b041579ad745b533a9b0b0e2d7c, type: 3}
-  - {fileID: 8300000, guid: ad506c96d674b974884f744c436a3eaa, type: 3}
-  - {fileID: 8300000, guid: 54096697613628645b389de7d2ae7915, type: 3}
-  - {fileID: 8300000, guid: c3767479654aba64bb75303cd0e926c2, type: 3}
-  - {fileID: 8300000, guid: 3bbd3d61d0637b7438b3871c4ff08ce0, type: 3}
+  - {fileID: 8300000, guid: 851209b9af67d39448bc49ec83ae78a7, type: 3}
+  - {fileID: 8300000, guid: bf9e779da76de364288002baadc81af4, type: 3}
+  - {fileID: 8300000, guid: 8e79b0914d4951c40b14878f34a4896e, type: 3}
