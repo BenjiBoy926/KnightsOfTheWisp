@@ -79,6 +79,7 @@ public class Character : MonoBehaviour
     [SerializeField] private Sprite _icon;
     [SerializeField] private Faction _faction;
     [SerializeField] private CharacterUIStyle _uiStyle;
+    [SerializeField] private WeaponAudio _weaponAudio;
     [SerializeField] private bool _isRanged;
     [SerializeField] private float _moveToCellCenterDuration = .2f;
 
@@ -329,6 +330,52 @@ public class Character : MonoBehaviour
         _faction.UnregisterCommander(this);
     }
 
+    // -- UI Theme -------------------------------------------------------
+
+    public Sprite GetHeartSprite(int currentHealth)
+    {
+        return _uiStyle.GetHeartSprite(currentHealth, BaseHealth);
+    }
+
+    public Color GetHealthColor(int currentHealth)
+    {
+        return _uiStyle.GetHealthColor(currentHealth, BaseHealth);
+    }
+
+    public Sprite GetPowerIcon()
+    {
+        return _uiStyle.GetPowerIcon(_isRanged);
+    }
+
+    public Color GetPowerColor(int currentPower)
+    {
+        // NOTE: don't actually distinguish current and base power yet because
+        // we haven't implemented any mechanics that would change the current power of a character.
+        return _uiStyle.GetPowerColor(currentPower, _stats.CurrentPower);
+    }
+
+    public Color GetEnergyColor(int currentEnergy)
+    {
+        return _uiStyle.GetEnergyColor(currentEnergy);
+    }
+
+    // -- Weapon Audio -------------------------------------
+
+    public void PlayWindUp()
+    {
+        _weaponAudio.PlayWindUp();
+    }
+
+    public void PlaySlash()
+    {
+        _weaponAudio.PlaySlash();
+    }
+
+    public void PlayHit()
+    {
+        _weaponAudio.PlayHit();
+    }
+
     // ── Animator ─────────────────────────────────────────────────────────
 
     public void SetAnimationSpeed(float speed)
@@ -423,35 +470,6 @@ public class Character : MonoBehaviour
     public void ShakeHealthUI()
     {
         _ui.ShakeHealthUI();
-    }
-
-    // -- UI Theme -------------------------------------------------------
-
-    public Sprite GetHeartSprite(int currentHealth)
-    {
-        return _uiStyle.GetHeartSprite(currentHealth, BaseHealth);
-    }
-
-    public Color GetHealthColor(int currentHealth)
-    {
-        return _uiStyle.GetHealthColor(currentHealth, BaseHealth);
-    }
-
-    public Sprite GetPowerIcon()
-    {
-        return _uiStyle.GetPowerIcon(_isRanged);
-    }
-
-    public Color GetPowerColor(int currentPower)
-    {
-        // NOTE: don't actually distinguish current and base power yet because
-        // we haven't implemented any mechanics that would change the current power of a character.
-        return _uiStyle.GetPowerColor(currentPower, _stats.CurrentPower);
-    }
-
-    public Color GetEnergyColor(int currentEnergy)
-    {
-        return _uiStyle.GetEnergyColor(currentEnergy);
     }
 
     // ── Stats ────────────────────────────────────────────────────────────

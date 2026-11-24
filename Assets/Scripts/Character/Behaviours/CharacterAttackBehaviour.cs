@@ -14,10 +14,6 @@ public class CharacterAttackBehaviour : MonoBehaviour
     [SerializeField] private float _chargeAloneOffset = .49f;
     [SerializeField] private float _chargeClashOffset = 0.3f;
 
-    [Space]
-    [SerializeField] private AudioClip _windUpClip;
-    [SerializeField] private AudioClip _attackConnectClip;
-
     private Character _character;
     private ArrowBlur _arrowBlur;
 
@@ -74,7 +70,7 @@ public class CharacterAttackBehaviour : MonoBehaviour
         Vector2 chargeOffset = chargeDirection * chargeMagnitude * _character.CellSize * towardsTarget;
         Vector2 chargePosition = cellPosition + chargeOffset;
 
-        EazySoundManager.PlaySound(_windUpClip);
+        _character.PlayWindUp();
         int frameCount = _character.IsRanged ? RangedFrames : MeleeFrames;
         float totalChargeDuration = frameCount * ApproxFrameDuration;
         return transform.DOMove(chargePosition, totalChargeDuration)
@@ -84,7 +80,7 @@ public class CharacterAttackBehaviour : MonoBehaviour
 
     private IEnumerator AttackConnectSequence(Character other)
     {
-        EazySoundManager.PlaySound(_attackConnectClip);
+        _character.PlaySlash();
         _character.SetAnimationSpeed(0);
         yield return other.PlayAttackConnectShake();
         _character.SetAnimationSpeed(1);

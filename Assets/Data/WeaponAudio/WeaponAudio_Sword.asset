@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602be55a3921b75449831186e1242596, type: 3}
+  m_Name: WeaponAudio_Sword
+  m_EditorClassIdentifier: 
+  _windUp:
+  - {fileID: 8300000, guid: 81f3ba502b98cd943a811f637ffdf35a, type: 3}
+  - {fileID: 8300000, guid: bf8dc70e084275443a2573c5637673ce, type: 3}
+  - {fileID: 8300000, guid: 714ccc2ea863e4b4a93b3d01de05f457, type: 3}
+  _slash:
+  - {fileID: 8300000, guid: 7f149b041579ad745b533a9b0b0e2d7c, type: 3}
+  - {fileID: 8300000, guid: ad506c96d674b974884f744c436a3eaa, type: 3}
+  - {fileID: 8300000, guid: 54096697613628645b389de7d2ae7915, type: 3}
+  - {fileID: 8300000, guid: c3767479654aba64bb75303cd0e926c2, type: 3}
+  - {fileID: 8300000, guid: 3bbd3d61d0637b7438b3871c4ff08ce0, type: 3}
+  _hit:
+  - {fileID: 8300000, guid: 515a0b3e7c16a444abd49c5cc4187d7b, type: 3}
+  - {fileID: 8300000, guid: a9e345281bbdb724c9c5aec85b430cad, type: 3}
+  - {fileID: 8300000, guid: ac505655f4831464185a3e2f50721398, type: 3}
+  - {fileID: 8300000, guid: b4af5d2b99f4c0c4aa914a3ac323455f, type: 3}
+  - {fileID: 8300000, guid: 2b1f58867ea0ef847a7a0bb20f6872ce, type: 3}
