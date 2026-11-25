@@ -90,3 +90,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _continueAction: {fileID: -9195287876939935047, guid: 13df5c69850f8384f961ed91b17f62b0, type: 3}
   _fadeDuration: 0.35
+  _autoContinue: 1
