@@ -18,7 +18,8 @@ public class PlayerCursor : MonoBehaviour
     private Player _player;
     private PlayerCursorFire _fire;
     private PlayerSelectionAura _aura;
-    private Mode _currentMode;
+    private Mode _currentMode = Mode.None;
+    private Mode? _overrideMode;
 
     private void Awake()
     {
@@ -50,9 +51,14 @@ public class PlayerCursor : MonoBehaviour
         }
     }
 
-    public void Show()
+    public void Override(Mode mode)
     {
-        SetCurrentMode(Mode.Torch);
+        _overrideMode = mode;
+    }
+
+    public void ClearOverride()
+    {
+        _overrideMode = null;
     }
 
     public void Burst()
@@ -62,7 +68,11 @@ public class PlayerCursor : MonoBehaviour
 
     private Mode CalculateCurrentMode()
     {
-        if (!_player.IsInputAllowed)
+        if (_overrideMode.HasValue)
+        {
+            return _overrideMode.Value;
+        }
+        else if (!_player.IsInputAllowed)
         {
             return Mode.None;
         }

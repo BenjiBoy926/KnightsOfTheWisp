@@ -97,7 +97,7 @@ namespace VerticalSlice
             }
 
             Walk(_finalWalkPosition, LoopType.Restart, UpdateObjectsAndCamera);
-            _player.ShowCursor();
+            _player.OverrideCursor(PlayerCursor.Mode.Torch);
             yield return _fadeInOverlay.FadeOut();
         }
 

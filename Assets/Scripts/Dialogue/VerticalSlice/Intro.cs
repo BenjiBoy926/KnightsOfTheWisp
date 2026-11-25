@@ -81,6 +81,7 @@ namespace VerticalSlice
             _ambush.Stop();
 
             _battle.Begin();
+            _player.ClearCursorOverride();
         }
 
         private void SetupInitialState()
@@ -112,7 +113,7 @@ namespace VerticalSlice
             Gregory.PlayIdleAnimation();
 
             yield return new WaitForSeconds(_initialEmberRevealDelay);
-            _player.ShowCursor();
+            _player.OverrideCursor(PlayerCursor.Mode.Torch);
 
             Vector3 GetEmberIntensity() => new(_ember.intensity, 0, 0);
             void SetEmberIntensity(Vector3 value) => _ember.intensity = value.x;

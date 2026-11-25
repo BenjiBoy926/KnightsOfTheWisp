@@ -59,9 +59,14 @@ public class Player : MonoBehaviour
         RefreshIsInputAllowed();
     }
 
-    public void ShowCursor()
+    public void OverrideCursor(PlayerCursor.Mode mode)
     {
-        _cursor.Show();
+        _cursor.Override(mode);
+    }
+
+    public void ClearCursorOverride()
+    {
+        _cursor.ClearOverride();
     }
 
     public void HideGridReticle()
