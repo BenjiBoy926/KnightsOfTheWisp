@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Graphic))]
 public class ContinueMarker : MonoBehaviour
 {
-    public bool Continue => ShouldContinue();
+    public bool Continue => !ShouldUseAutoContinue() && _continue;
 
     [SerializeField] private InputActionReference _continueAction;
     [SerializeField] private float _fadeDuration = 0.5f;
