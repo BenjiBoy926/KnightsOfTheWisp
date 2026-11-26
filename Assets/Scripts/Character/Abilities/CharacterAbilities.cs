@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterAbilities : MonoBehaviour
@@ -11,8 +10,9 @@ public class CharacterAbilities : MonoBehaviour
         _character = GetComponentInParent<Character>();
     }
 
-    public void Activate()
+    public IEnumerator GetActivationSequence(Character other)
     {
-        Debug.Log("Abilities activated!");
+        Debug.Log($"Abilities activated on: {other}", _character);
+        yield break;
     }
 }

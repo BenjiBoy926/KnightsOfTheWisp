@@ -38,7 +38,7 @@ public class InputAnimator : MonoBehaviour
     public void Tap()
     {
         CoroutineRunner.StopAll(this);
-        CoroutineRunner.StartCoroutine(this, GetTapSequence());
+        CoroutineRunner.Run(this, GetTapSequence());
     }
 
     private IEnumerator GetTapSequence()

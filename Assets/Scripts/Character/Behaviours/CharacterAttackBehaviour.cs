@@ -26,9 +26,9 @@ public class CharacterAttackBehaviour : MonoBehaviour
     public IEnumerator GetSequence(Character other)
     {
         yield return _character.BeginMoveSequence(other);
-        _character.ActivateAbilities();
+        yield return _character.ActivateAbilities(other);
         yield return GetAttackAloneSequence(other);
-        _character.ActivateAbilities();
+        yield return _character.ActivateAbilities(other);
         if (InteractionResult.ShouldOtherCounter(_character, other, other.CurrentHealth))
         {
             yield return other.GetAttackAloneSequence(_character);
@@ -42,7 +42,7 @@ public class CharacterAttackBehaviour : MonoBehaviour
         yield return GetMeleeSwipeSequence(other);
 
         _character.MoveToCellCenter();
-        Coroutine otherHurtRoutine = CoroutineRunner.StartCoroutine(this, other.GetHurtSequence(_character));
+        Coroutine otherHurtRoutine = CoroutineRunner.Run(this, other.GetHurtSequence(_character));
         while (_character.IsOneShotAnimationPlaying)
         {
             yield return null;

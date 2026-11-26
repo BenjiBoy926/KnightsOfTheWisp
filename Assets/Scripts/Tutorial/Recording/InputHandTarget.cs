@@ -20,13 +20,13 @@ public class InputHandTarget : MonoBehaviour
     public void Press(float duration)
     {
         CoroutineRunner.StopAll(this);
-        CoroutineRunner.StartCoroutine(this, GetRingToggleSequence(duration, true));
+        CoroutineRunner.Run(this, GetRingToggleSequence(duration, true));
     }
     
     public void Release(float duration)
     {
         CoroutineRunner.StopAll(this);
-        CoroutineRunner.StartCoroutine(this, GetRingToggleSequence(duration, false));
+        CoroutineRunner.Run(this, GetRingToggleSequence(duration, false));
     }
 
     private IEnumerator GetRingToggleSequence(float duration, bool enable)

@@ -168,35 +168,35 @@ public class Character : MonoBehaviour
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _attackBehaviour.GetSequence(other);
-        return CoroutineRunner.StartCoroutine(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine Defend()
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _defendBehaviour.GetSequence();
-        return CoroutineRunner.StartCoroutine(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine Heal(Character other)
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _healBehaviour.GetSequence(other);
-        return CoroutineRunner.StartCoroutine(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine BeHealed(Character other)
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _beHealedBehaviour.GetSequence(other);
-        return CoroutineRunner.StartCoroutine(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public Coroutine Cancel()
     {
         CoroutineRunner.StopAll(this);
         IEnumerator sequence = _cancelBehaviour.GetSequence();
-        return CoroutineRunner.StartCoroutine(this, sequence);
+        return CoroutineRunner.Run(this, sequence);
     }
 
     public IEnumerator BeginMoveSequence(Character other)
@@ -637,9 +637,9 @@ public class Character : MonoBehaviour
 
     // -- Abilities -------------------------------------------------------
 
-    public void ActivateAbilities()
+    public Coroutine ActivateAbilities(Character other)
     {
-        _abilities.Activate();
+        return CoroutineRunner.Run(this, _abilities.GetActivationSequence(other));
     }
 
     // ── Battle ───────────────────────────────────────────────────────────

@@ -24,7 +24,7 @@ public class CharacterDefendBehaviour : MonoBehaviour
 
         EazySoundManager.PlaySound(_clip);
 
-        _character.ActivateAbilities();
+        yield return _character.ActivateAbilities(null);
         yield return _character.EndMoveSequence(null);
     }
 
