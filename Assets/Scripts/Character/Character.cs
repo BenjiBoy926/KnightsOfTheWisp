@@ -100,8 +100,8 @@ public class Character : MonoBehaviour
     private CharacterUndoRedoBehaviour _undoRedoBehaviour;
     private CharacterSpeech _speech;
     private CharacterFootfallAudio _footfallAudio;
+    private CharacterAbilities _abilities;
     private Battle _battle;
-    // NOTE: static — must not carry state across scene reloads. Clear on scene unload if needed.
     private static readonly HashSet<Character> _actingCharacters = new();
 
     // ── Unity Lifecycle ──────────────────────────────────────────────────
@@ -125,6 +125,7 @@ public class Character : MonoBehaviour
         _undoRedoBehaviour = GetComponent<CharacterUndoRedoBehaviour>();
         _speech = GetComponent<CharacterSpeech>();
         _footfallAudio = GetComponent<CharacterFootfallAudio>();
+        _abilities = GetComponentInChildren<CharacterAbilities>();
     }
 
     private void OnEnable()
@@ -632,6 +633,13 @@ public class Character : MonoBehaviour
     public void SetFootstepsAudible(bool audible)
     {
         _footfallAudio.enabled = audible;
+    }
+
+    // -- Abilities -------------------------------------------------------
+
+    public void ActivateAbilities()
+    {
+        _abilities.Activate();
     }
 
     // ── Battle ───────────────────────────────────────────────────────────

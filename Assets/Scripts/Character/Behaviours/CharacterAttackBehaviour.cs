@@ -26,7 +26,9 @@ public class CharacterAttackBehaviour : MonoBehaviour
     public IEnumerator GetSequence(Character other)
     {
         yield return _character.BeginMoveSequence(other);
+        _character.ActivateAbilities();
         yield return GetAttackAloneSequence(other);
+        _character.ActivateAbilities();
         if (InteractionResult.ShouldOtherCounter(_character, other, other.CurrentHealth))
         {
             yield return other.GetAttackAloneSequence(_character);
